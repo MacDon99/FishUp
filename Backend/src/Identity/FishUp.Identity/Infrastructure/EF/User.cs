@@ -9,12 +9,12 @@ namespace FishUp.Identity.Infrastructure.EF
         public string NormalizedUsername { get; private set; }
         public string Email { get; private set; }
         public string NormalizedEmail { get; private set; }
-        public string PasswordHash { get; private set; }
-        public string SecurityStamp { get; private set; }
+        public byte[] PasswordHash { get; private set; }
+        public byte[] SecurityStamp { get; private set; }
 
         protected User() {}
 
-        public User(string username, string email, string passwordHash, string securityStamp)
+        public User(string username, string email, byte[] passwordHash, byte[] securityStamp)
         {
             Username = username;
             NormalizedUsername = username.ToUpper();

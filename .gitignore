@@ -329,3 +329,4 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 Backend/src/Identity/FishUp.Identity/Logs/Log-20210320.txt
+/Backend/src/Identity/FishUp.Identity/Logs

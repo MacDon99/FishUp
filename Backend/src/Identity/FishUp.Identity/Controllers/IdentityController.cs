@@ -15,12 +15,15 @@ namespace FishUp.Identity.Controllers
         {
             _identityUserService  = identityUserService;
         }
+
         [Route("sign-up")]
         [HttpPost]
         public async Task<IActionResult> SignUp([FromBody] CreateUserRequest request, CancellationToken cancellationToken)
-        {
-            
-            return Ok(await _identityUserService.CreateUserAsync(request, cancellationToken));
-        }
+            => Ok(await _identityUserService.CreateUserAsync(request, cancellationToken));
+
+        [Route("sign-in")]
+        [HttpPost]
+        public async Task<IActionResult> SignIn([FromBody] SignInRequest request, CancellationToken cancellationToken)
+            => Ok(await _identityUserService.SignInAsync(request, cancellationToken));
     }
 }

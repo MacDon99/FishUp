@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace FishUp.Identity.Infrastructure
+namespace FishUp.Identity.Infrastructure.EF
 {
     public class IdentityDbContext : DbContext
     {

@@ -1,7 +1,7 @@
 using System;
 using FishUp.Domain;
 
-namespace FishUp.Identity.Infrastructure
+namespace FishUp.Identity.Infrastructure.EF
 {
     public class User : Entity
     {

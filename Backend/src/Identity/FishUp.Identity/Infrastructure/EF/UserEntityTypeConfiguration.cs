@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace FishUp.Identity.Infrastructure
+namespace FishUp.Identity.Infrastructure.EF
 {
     public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User>
     {

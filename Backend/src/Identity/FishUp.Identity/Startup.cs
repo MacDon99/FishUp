@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using FishUp.Identity.Infrastructure;
+using FishUp.Identity.Infrastructure.EF;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,6 +28,7 @@ namespace FishUp.Identity
             services.AddControllers();
             services.AddDbContext<IdentityDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
+            services.AddScoped<IIdentityUserService, IdentityUserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

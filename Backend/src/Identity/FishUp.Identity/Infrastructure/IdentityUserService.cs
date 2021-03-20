@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Transactions;
+using FishUp.Domain.Types;
 using FishUp.Identity.Infrastructure.EF;
 using FishUp.Identity.Messages.Commands;
 using FishUp.Identity.Responses;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
@@ -26,23 +29,45 @@ namespace FishUp.Identity.Infrastructure
 
         public async Task<CreateUserResponse> CreateUserAsync(CreateUserRequest request, CancellationToken cancellationToken)
         {
-            try
+            using (var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
             {
-                var (passwordHash, securityStamp) = GetPasswordHashAndSecurityStamp(request.Password);
-
-                var user = new User(request.Username, request.Email, passwordHash, securityStamp);
-                
-                await _identityDbContext.Users.AddAsync(user);
-                await _identityDbContext.SaveChangesAsync();
-                
-                return new CreateUserResponse() 
+                try
                 {
-                    Created = true
-                };
-            }
-            catch(Exception ex)
-            {
-                _logger.LogError($"Registration error: {ex.Message}");
+                    if (await _identityDbContext.Users.AnyAsync(user => 
+                        user.NormalizedEmail == request.Email.ToUpper() || user.NormalizedUsername == request.Username.ToUpper()))
+                    {
+                        return new CreateUserResponse() 
+                        {
+                            Created = false,
+                            Errors = new List<string>()
+                            {
+                                "User already exists."
+                            }
+                        };
+                    }
+
+                    var (passwordHash, securityStamp) = GetPasswordHashAndSecurityStamp(request.Password);
+
+                    var user = new User(request.Username, request.Email, passwordHash, securityStamp);
+
+                    await _identityDbContext.Users.AddAsync(user);
+                    await _identityDbContext.SaveChangesAsync();
+
+                    transaction.Complete();
+                    
+                    return new CreateUserResponse() 
+                    {
+                        Created = true
+                    };
+                }
+                catch(Exception ex)
+                {
+                    _logger.LogError($"Registration error: {ex.Message}");
+                }
+                finally
+                {
+                    transaction.Dispose();
+                }
             }
 
             return new CreateUserResponse()

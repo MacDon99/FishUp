@@ -1,3 +1,4 @@
+using FishUp.Domain.Types;
 using Microsoft.EntityFrameworkCore;
 
 namespace FishUp.Identity.Infrastructure.EF

@@ -1,7 +1,4 @@
-using System;
-using FishUp.Domain;
-
-namespace FishUp.Identity.Infrastructure.EF
+namespace FishUp.Domain.Types
 {
     public class User : Entity
     {
@@ -27,16 +24,16 @@ namespace FishUp.Identity.Infrastructure.EF
         public override void Valid()
         {
             if(Username is null)
-                throw new Exception("");
+                throw new ServerException(ExceptionCode.CanNotBeNull, "Username cannot be null");
 
             if(Email is null)
-                throw new Exception("");
+                throw new ServerException(ExceptionCode.CanNotBeNull, "Email cannot be null");
 
             if(PasswordHash is null)
-                throw new Exception("");
+                throw new ServerException(ExceptionCode.CanNotBeNull, "Password cannot be null");
             
             if(SecurityStamp is null)
-                throw new Exception("");
+                throw new ServerException(ExceptionCode.CanNotBeNull);
         }
     }
 }

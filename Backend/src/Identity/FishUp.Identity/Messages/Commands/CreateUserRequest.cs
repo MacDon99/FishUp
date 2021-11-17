@@ -1,8 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using FishUp.Common.Dispatchers;
 
 namespace FishUp.Identity.Messages.Commands
 {
-    public class CreateUserRequest
+    public class CreateUserRequest : ICommand
     {
         [Required]
         public string Username { get; set; }
@@ -10,5 +11,10 @@ namespace FishUp.Identity.Messages.Commands
         public string Email { get; set; }
         [Required]
         public string Password { get; set; }
+        [Required]
+        public string FirstName { get; set; }
+        public string SecondName { get; set; }
+        [Required]
+        public string LastName { get; set; }
     }
 }

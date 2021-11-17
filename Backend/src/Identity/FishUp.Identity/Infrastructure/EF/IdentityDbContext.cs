@@ -1,14 +1,15 @@
 using FishUp.Domain.Types;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using IdentityEfCore = Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace FishUp.Identity.Infrastructure.EF
 {
-    public class IdentityDbContext : DbContext
+    public class IdentityDbContext : IdentityEfCore.IdentityDbContext<AppIdentityUser>
     {
-        public IdentityDbContext(DbContextOptions<IdentityDbContext> options) : base(options)
-        {
-            
-        }
+        public IdentityDbContext(DbContextOptions<IdentityDbContext> options)
+            : base(options)
+        { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

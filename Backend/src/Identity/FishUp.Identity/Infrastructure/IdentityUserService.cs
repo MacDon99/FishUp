@@ -1,14 +1,17 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Transactions;
+using FishUp.Common.DTO;
+using FishUp.Common.Services;
 using FishUp.Domain.Types;
 using FishUp.Identity.Infrastructure.EF;
 using FishUp.Identity.Messages.Commands;
 using FishUp.Identity.Responses;
+using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -20,126 +23,90 @@ namespace FishUp.Identity.Infrastructure
         private readonly IdentityDbContext _identityDbContext;
         private readonly ILogger<IdentityUserService> _logger;
         private readonly IConfiguration _configuration;
+        private readonly UserManager<AppIdentityUser> _userManager;
+        private readonly SignInManager<AppIdentityUser> _signInManager;
+        private readonly IJwtHandler _jwtHandler;
 
-        public IdentityUserService(IdentityDbContext identityDbContext, ILogger<IdentityUserService> logger, IConfiguration configuration)
+        public IdentityUserService(IdentityDbContext identityDbContext, ILogger<IdentityUserService> logger,
+            IConfiguration configuration, UserManager<AppIdentityUser> userManager, SignInManager<AppIdentityUser> signInManager,
+            IJwtHandler jwtHandler)
         {
             _identityDbContext = identityDbContext;
             _logger = logger;
             _configuration = configuration;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _jwtHandler = jwtHandler;
         }
 
-        public async Task<CreateUserResponse> CreateUserAsync(CreateUserRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> CreateUserAsync(CreateUserRequest request, CancellationToken cancellationToken)
         {
-            using (var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            if (await _userManager.Users.AnyAsync(user =>
+                user.NormalizedEmail == request.Email.ToUpper() || user.NormalizedUserName == request.Username.ToUpper(), cancellationToken))
             {
-                try
-                {
-                    if (await _identityDbContext.Users.AnyAsync(user => 
-                        user.NormalizedEmail == request.Email.ToUpper() || user.NormalizedUsername == request.Username.ToUpper(), cancellationToken))
-                    {
-                        return new CreateUserResponse() 
-                        {
-                            Created = false,
-                            Errors = new List<string>()
-                            {
-                                "User already exists."
-                            }
-                        };
-                    }
+                throw new DomainException(ExceptionCode.InvalidValue, "User with given username or email already exist.");
+            }
+            var identityUser = new AppIdentityUser()
+            {
+                Email = request.Email,
+                NormalizedEmail = request.Email.ToUpper(),
+                UserName = request.Username,
+                NormalizedUserName = request.Username.ToUpper()
+            };
 
-                    var (passwordHash, securityStamp) = GetPasswordHashAndSecurityStamp(request.Password);
+            var creationResult = await _userManager.CreateAsync(identityUser, request.Password);
 
-                    var user = new User(request.Username, request.Email, passwordHash, securityStamp);
-
-                    await _identityDbContext.Users.AddAsync(user, cancellationToken);
-                    await _identityDbContext.SaveChangesAsync(cancellationToken);
-
-                    transaction.Complete();
-                    
-                    return new CreateUserResponse() 
-                    {
-                        Created = true
-                    };
-                }
-                catch(Exception ex)
-                {
-                    _logger.LogError($"Registration error: {ex.Message}");
-                }
-                finally
-                {
-                    transaction.Dispose();
-                }
+            if (!creationResult.Succeeded)
+            {
+                throw new DomainException(ExceptionCode.InvalidValue, "Registration failed.");
             }
 
-            return new CreateUserResponse()
-            {
-                Created = false,
-                Errors = new List<string>()
-                    {
-                        "An error occured while registering user."
-                    }
-            };
+            await _identityDbContext.SaveChangesAsync(cancellationToken);
+
+            var identityUserId = await _userManager.Users.Where(u => u.NormalizedEmail == request.Email.ToUpper())
+                .Select(u => u.Id)
+                .SingleAsync();
+
+            var user = new User(request.FirstName, request.LastName, Guid.Parse(identityUserId), request.SecondName);
+
+            await _identityDbContext.Users.AddAsync(user, cancellationToken);
+            await _identityDbContext.SaveChangesAsync(cancellationToken);
+
+            return Unit.Value;
         }
 
         public async Task<SignInResponse> SignInAsync(SignInRequest request, CancellationToken cancellationToken)
         {
-            var user = await _identityDbContext.Users.FirstOrDefaultAsync(user => 
-                user.NormalizedUsername == request.UsernameOrEmail.ToUpper() || user.NormalizedEmail == request.UsernameOrEmail.ToUpper(), cancellationToken);
-            
-            if (user is null)
+            var identityUser = await _userManager.Users.FirstOrDefaultAsync(u =>
+                u.NormalizedEmail == request.UsernameOrEmail.ToUpper() ||
+                u.NormalizedUserName == request.UsernameOrEmail.ToUpper());
+
+            if (identityUser is null)
             {
                 throw new DomainException(ExceptionCode.NotExists, "User does not exist");
             }
 
-            if(VerifyPassword(request.Password, user.PasswordHash, user.SecurityStamp))
+            var signInResult = await _signInManager.CheckPasswordSignInAsync(identityUser, request.Password, true);
+
+            if (!signInResult.Succeeded)
             {
-                return new SignInResponse()
-                {
-                    SignedIn = true,
-                    Token = ""
-                };
+                throw new DomainException(ExceptionCode.NotExists, "Authentication failed");
             }
-            
+
+            var key = _configuration["Jwt:Key"];
+            var issuer = _configuration["Jwt:Issuer"];
+            var audience = _configuration["Jwt:Audience"];
+            var expirationTime = _configuration["Jwt:ExpirationTime"];
+
             return new SignInResponse()
             {
-                SignedIn = false,
-                Token = ""
-            };
-        }
-
-        private (byte[], byte[]) GetPasswordHashAndSecurityStamp(string password)
-        {
-            using(var hmac = new System.Security.Cryptography.HMACSHA512(Encoding.ASCII.GetBytes(_configuration.GetSection("Security:Salt").Value)))
-            {
-                var passwordInBytes = Encoding.UTF8.GetBytes(password);
-                var hashedPassword = hmac.ComputeHash(passwordInBytes);
-                byte[] key;
-                
-                using(var secondHmac = new System.Security.Cryptography.HMACSHA512())
-                {
-                    hashedPassword = secondHmac.ComputeHash(hashedPassword);
-                    key = secondHmac.Key;
-                };
-
-                return (hashedPassword, key);
-            };
-        }
-
-        private bool VerifyPassword(string passwordFromRequest, byte[] userPassword , byte[] securityStamp)
-        {
-            using(var hmac = new System.Security.Cryptography.HMACSHA512(Encoding.ASCII.GetBytes(_configuration.GetSection("Security:Salt").Value)))
-            {
-                var passwordInBytes = Encoding.UTF8.GetBytes(passwordFromRequest);
-                var hashedPassword = hmac.ComputeHash(passwordInBytes);
-                byte[] key;
-                
-                using(var secondHmac = new System.Security.Cryptography.HMACSHA512(securityStamp))
-                {
-                    hashedPassword = secondHmac.ComputeHash(hashedPassword);
-                    key = secondHmac.Key;
-                };
-
-                return userPassword.SequenceEqual(hashedPassword);
+                Token = _jwtHandler.BuildToken(key, audience, issuer,
+                    Convert.ToInt32(expirationTime), new UserDTO()
+                    {
+                        UserName = identityUser.UserName,
+                        Role = "DefaultRole",
+                        Id = identityUser.Id
+                    })
             };
         }
     }

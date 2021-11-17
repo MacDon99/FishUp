@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using FishUp.Identity.Infrastructure;
 using FishUp.Identity.Messages.Commands;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FishUp.Identity.Controllers
@@ -29,5 +30,6 @@ namespace FishUp.Identity.Controllers
         [HttpPost]
         public async Task<IActionResult> SignIn([FromBody] SignInRequest request, CancellationToken cancellationToken)
             => Ok(await _identityUserService.SignInAsync(request, cancellationToken));
+
     }
 }

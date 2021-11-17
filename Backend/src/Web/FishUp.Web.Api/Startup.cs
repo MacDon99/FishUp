@@ -1,4 +1,5 @@
 using System.Text;
+using FishUp.Common.Dispatchers;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -28,12 +29,15 @@ namespace FishUp.Web.Api
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMediatR(typeof(Startup).Assembly);  
+            services.AddMediatR(
+                typeof(Startup), 
+                typeof(ICommandHandler<ICommand>),
+                typeof(IQueryHandler<IQueryResponse>));
             services.AddControllers();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
-                {        
+                {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,

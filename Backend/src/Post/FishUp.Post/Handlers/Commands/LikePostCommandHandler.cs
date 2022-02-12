@@ -4,7 +4,7 @@ using FishUp.Post.Models.Messages.Commands;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace FishUp.Post.Handlers
+namespace FishUp.Post.Handlers.Commands
 {
     public class LikePostCommandHandler : ICommandHandler<LikePostCommand>
     {
@@ -17,7 +17,7 @@ namespace FishUp.Post.Handlers
 
         public async Task<Unit> Handle(LikePostCommand request, CancellationToken cancellationToken)
         {
-            var post = _dbContext.Posts.Include(post => post.Likers).Single(post => post.Id == request.postId);
+            var post = _dbContext.Posts.Include(post => post.Likers).Single(post => post.Id == request.PostId);
             post.AddLike(request.UserId);
             await _dbContext.SaveChangesAsync();
             return Unit.Value;

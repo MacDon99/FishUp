@@ -4,7 +4,7 @@ using FishUp.Post.Models.Messages.Queries;
 using FishUp.Post.Models.Responses.Queries;
 using Microsoft.EntityFrameworkCore;
 
-namespace FishUp.Post.Handlers
+namespace FishUp.Post.Handlers.Queries
 {
     public class GetCreatedPostsQueryHandler : IQueryHandler<GetCreatedPostsQuery, CreatedPosts>
     {

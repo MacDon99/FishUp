@@ -2,5 +2,5 @@
 
 namespace FishUp.Post.Models.Messages.Commands
 {
-    public record LikePostCommand(Guid UserId, Guid postId) : ICommand;
+    public record LikePostCommand(Guid UserId, Guid PostId) : ICommand;
 }

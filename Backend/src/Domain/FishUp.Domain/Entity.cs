@@ -13,7 +13,7 @@ namespace FishUp.Domain
             CreateDate = DateTime.Now;
         }
 
-        public void UpdateEntity()
+        protected void UpdateEntity()
         {
             EditDate = DateTime.Now;
         }

@@ -24,26 +24,20 @@ namespace FishUp.Post.Controllers
             => Ok(await _mediator.Send(command with { AuthorId = GetUserId() }));
 
         [HttpGet]
-        public IActionResult GetRecentPosts()
-        {
-            return Ok();
-        }
+        public async Task<IActionResult> GetRecentPosts()
+            => Ok(await _mediator.Send(new GetRecentPostsQuery()));
 
         [HttpGet("created")]
         public async Task<IActionResult> GetCreatedPosts()
             => Ok(await _mediator.Send(new GetCreatedPostsQuery(GetUserId())));
 
         [HttpGet("{id}")]
-        public IActionResult GetPostDetails(int id)
-        {
-            return Ok();
-        }
+        public async Task<IActionResult> GetPostDetails(Guid id)
+            => Ok(await _mediator.Send(new GetPostDetailsQuery(id)));
         
         [HttpPut("{id}/update")]
-        public IActionResult UpdatePost(int id)
-        {
-            return Ok();
-        }
+        public async Task<IActionResult> UpdatePost([FromBody] UpdatePostCommand request, Guid id)
+            => Ok(await _mediator.Send(request with { UserId = GetUserId(), PostId = id }));
 
         [HttpPut("{id}/like")]
         public async Task<IActionResult> LikePost(Guid id)
@@ -54,21 +48,16 @@ namespace FishUp.Post.Controllers
             => Ok(await _mediator.Send(new UnlikePostCommand(GetUserId(), id)));
 
         [HttpPut("{id}/disLike")]
-        public IActionResult DisLike(int id)
-        {
-            return Ok();
-        }
+        public async Task<IActionResult> DislikePost(Guid id)
+            => Ok(await _mediator.Send(new DislikePostCommand(GetUserId(), id)));
+
 
         [HttpPut("{id}/undisLike")]
-        public IActionResult UndisLike(int id)
-        {
-            return Ok();
-        }
+        public async Task<IActionResult> UndislikePost(Guid id)
+            => Ok(await _mediator.Send(new UndislikePostCommand(GetUserId(), id)));
 
         [HttpDelete("{id}/delete")]
-        public IActionResult DeletePost(int id)
-        {
-            return Ok();
-        }
+        public async Task<IActionResult> DeletePost(Guid id)
+            => Ok(await _mediator.Send(new DeletePostCommand(GetUserId(), id)));
     }
 }

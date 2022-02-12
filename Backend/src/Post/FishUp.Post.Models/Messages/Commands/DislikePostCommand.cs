@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FishUp.Dispatchers;
 
 namespace FishUp.Post.Models.Messages.Commands
 {
-    internal class DislikePostCommand
-    {
-    }
+    public record DislikePostCommand(Guid UserId, Guid PostId) : ICommand;
 }

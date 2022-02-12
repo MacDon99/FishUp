@@ -94,6 +94,14 @@ namespace FishUp.Post.Models.Entities
             }
         }
 
+        public void Update(string message, IEnumerable<StoredFile>? photos = null)
+        {
+            Content = message;
+            Photos = photos is null ? Photos : photos.ToList();
+
+            UpdateEntity();
+        }
+
         public override void Valid()
         {
             if (Content is null)

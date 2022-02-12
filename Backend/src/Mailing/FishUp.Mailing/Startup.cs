@@ -37,10 +37,8 @@ namespace FishUp.Mailing
                 .Get<EmailConfiguration>();
             services.AddSingleton(emailConfig);
 
-            services.AddMediatR(
-                typeof(Startup), 
-                typeof(ICommandHandler<ICommand>),
-                typeof(IQueryHandler<IQueryResponse>));
+            services.RegisterMediatR(typeof(Startup));
+
             services.AddControllers().AddNewtonsoftJson()
                 .AddJsonOptions(options => 
                 {

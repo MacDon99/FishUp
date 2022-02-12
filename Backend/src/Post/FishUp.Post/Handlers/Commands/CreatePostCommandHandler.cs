@@ -5,7 +5,7 @@ using FishUp.Post.Models.Messages.Commands;
 using MediatR;
 using PostEntity = FishUp.Post.Models.Entities.Post;
 
-namespace FishUp.Post.Handlers
+namespace FishUp.Post.Handlers.Commands
 {
     public class CreatePostCommandHandler : ICommandHandler<CreatePostCommand>
     {

@@ -6,4 +6,9 @@ namespace FishUp.Dispatchers
     {
         
     }
+
+    public interface ICommand<TResponse> : IRequest<TResponse>
+    {
+
+    }
 }

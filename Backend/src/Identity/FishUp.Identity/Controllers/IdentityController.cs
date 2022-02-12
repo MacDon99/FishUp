@@ -22,13 +22,13 @@ namespace FishUp.Identity.Controllers
 
         [Route("sign-up")]
         [HttpPost]
-        public async Task<IActionResult> SignUp([FromBody] CreateUserRequest request, CancellationToken cancellationToken)
+        public async Task<IActionResult> CreateUser([FromBody] CreateUserCommand request, CancellationToken cancellationToken)
             => Ok(await _mediator.Send(request));
 
         [Route("sign-in")]
         [HttpPost]
-        public async Task<IActionResult> SignIn([FromBody] SignInRequest request, CancellationToken cancellationToken)
-            => Ok(await _identityUserService.SignInAsync(request, cancellationToken));
+        public async Task<IActionResult> SignIn([FromBody] SignInCommand request, CancellationToken cancellationToken)
+            => Ok(await _mediator.Send(request));
 
     }
 }

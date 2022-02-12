@@ -4,6 +4,7 @@ using FishUp.Post.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FishUp.Post.Models.Migrations
 {
     [DbContext(typeof(PostDbContext))]
-    partial class PostDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220212050206_AddPhotos")]
+    partial class AddPhotos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,7 +50,7 @@ namespace FishUp.Post.Models.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User", "identity");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("FishUp.Models.Types.Comment", b =>
@@ -118,56 +120,6 @@ namespace FishUp.Post.Models.Migrations
                     b.ToTable("Files", "mutual");
                 });
 
-            modelBuilder.Entity("FishUp.Post.Models.Entities.Disliker", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("EditDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("PostId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PostId");
-
-                    b.ToTable("Dislikers", "post");
-                });
-
-            modelBuilder.Entity("FishUp.Post.Models.Entities.Liker", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("EditDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("PostId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PostId");
-
-                    b.ToTable("Likers", "post");
-                });
-
             modelBuilder.Entity("FishUp.Post.Models.Entities.Post", b =>
                 {
                     b.Property<Guid>("Id")
@@ -212,27 +164,9 @@ namespace FishUp.Post.Models.Migrations
                         .HasForeignKey("PostId");
                 });
 
-            modelBuilder.Entity("FishUp.Post.Models.Entities.Disliker", b =>
-                {
-                    b.HasOne("FishUp.Post.Models.Entities.Post", null)
-                        .WithMany("Dislikers")
-                        .HasForeignKey("PostId");
-                });
-
-            modelBuilder.Entity("FishUp.Post.Models.Entities.Liker", b =>
-                {
-                    b.HasOne("FishUp.Post.Models.Entities.Post", null)
-                        .WithMany("Likers")
-                        .HasForeignKey("PostId");
-                });
-
             modelBuilder.Entity("FishUp.Post.Models.Entities.Post", b =>
                 {
                     b.Navigation("Comments");
-
-                    b.Navigation("Dislikers");
-
-                    b.Navigation("Likers");
 
                     b.Navigation("Photos");
                 });

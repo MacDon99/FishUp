@@ -24,6 +24,7 @@
     <ProjectReference Include="..\..\Common\FishUp.Dispatchers\FishUp.Dispatchers.csproj" />
     <ProjectReference Include="..\..\Common\FishUp.Services\FishUp.Services.csproj" />
     <ProjectReference Include="..\..\Domain\FishUp.Domain\FishUp.Domain.csproj" />
+    <ProjectReference Include="..\FishUp.Identity.Models\FishUp.Identity.Models.csproj" />
   </ItemGroup>
 
 </Project>

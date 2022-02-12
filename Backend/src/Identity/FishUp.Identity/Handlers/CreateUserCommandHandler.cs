@@ -7,16 +7,16 @@ using MediatR;
 
 namespace FishUp.Identity.Handlers
 {
-    public class CreateUserRequestHandler : ICommandHandler<CreateUserRequest>
+    public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand>
     {
         private readonly IIdentityUserService _identityUserService;
 
-        public CreateUserRequestHandler(IIdentityUserService identityUserService)
+        public CreateUserCommandHandler(IIdentityUserService identityUserService)
         {
             _identityUserService = identityUserService;
         }
 
-        public Task<Unit> Handle(CreateUserRequest request, CancellationToken cancellationToken)
+        public Task<Unit> Handle(CreateUserCommand request, CancellationToken cancellationToken)
             => _identityUserService.CreateUserAsync(request, cancellationToken);
     }
 }

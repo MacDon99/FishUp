@@ -8,7 +8,7 @@ namespace FishUp.Identity.Infrastructure
 {
     public interface IIdentityUserService
     {
-        Task<Unit> CreateUserAsync(CreateUserRequest request, CancellationToken cancellationToken); 
-        Task<SignInResponse> SignInAsync(SignInRequest request, CancellationToken cancellationToken);  
+        Task<Unit> CreateUserAsync(CreateUserCommand request, CancellationToken cancellationToken); 
+        Task<SignInResponse> SignInAsync(SignInCommand request, CancellationToken cancellationToken);  
     }
 }

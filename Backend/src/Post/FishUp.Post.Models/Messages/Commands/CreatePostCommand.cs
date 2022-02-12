@@ -9,6 +9,6 @@ namespace FishUp.Post.Models.Messages.Commands
         [Required]
         public string Message { get; set; }
         public Guid AuthorId { get; set; }
-        public IEnumerable<IFormFile> Photos { get; set; }
+        public IEnumerable<IFormFile>? Photos { get; set; }
     }
 }

@@ -37,7 +37,7 @@ namespace FishUp.Identity.Infrastructure
             _jwtHandler = jwtHandler;
         }
 
-        public async Task<Unit> CreateUserAsync(CreateUserRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> CreateUserAsync(CreateUserCommand request, CancellationToken cancellationToken)
         {
             if (await _userManager.Users.AnyAsync(user =>
                 user.NormalizedEmail == request.Email.ToUpper() || user.NormalizedUserName == request.Username.ToUpper(), cancellationToken))
@@ -73,7 +73,7 @@ namespace FishUp.Identity.Infrastructure
             return Unit.Value;
         }
 
-        public async Task<SignInResponse> SignInAsync(SignInRequest request, CancellationToken cancellationToken)
+        public async Task<SignInResponse> SignInAsync(SignInCommand request, CancellationToken cancellationToken)
         {
             if(request.Password != request.RepeatPassword)
             {

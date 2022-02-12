@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Messages\NewFolder\**" />
+    <EmbeddedResource Remove="Messages\NewFolder\**" />
+    <None Remove="Messages\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Messages\Commands\CreatePostCommand.cs~RFca1c6a.TMP" />
   </ItemGroup>
 
@@ -30,6 +36,10 @@
     <ProjectReference Include="..\..\Common\FishUp.Dispatchers\FishUp.Dispatchers.csproj" />
     <ProjectReference Include="..\..\Common\FishUp.Models\FishUp.Models.csproj" />
     <ProjectReference Include="..\..\Domain\FishUp.Domain\FishUp.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Responses\Commands\" />
   </ItemGroup>
 
 </Project>

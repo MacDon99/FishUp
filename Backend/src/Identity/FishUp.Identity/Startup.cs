@@ -41,10 +41,9 @@ namespace FishUp.Identity
             services.AddControllers();
             services.AddDbContext<IdentityDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
-            services.AddMediatR(
-                typeof(Startup), 
-                typeof(ICommandHandler<ICommand>),
-                typeof(IQueryHandler<IQueryResponse>));
+
+            services.RegisterMediatR(typeof(Startup));
+
             services.AddScoped<IIdentityUserService, IdentityUserService>();
             services.AddScoped<IIdentityUserService, IdentityUserService>();
             services.AddScoped<IJwtHandler, JwtHandler>();

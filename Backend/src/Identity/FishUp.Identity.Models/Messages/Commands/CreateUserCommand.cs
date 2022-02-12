@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FishUp.Identity.Messages.Commands
 {
-    public class CreateUserRequest : ICommand
+    public class CreateUserCommand : ICommand
     {
         [Required]
         public string Username { get; set; }

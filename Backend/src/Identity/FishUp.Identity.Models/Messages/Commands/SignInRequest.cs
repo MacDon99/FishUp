@@ -1,8 +1,10 @@
+using FishUp.Dispatchers;
+using FishUp.Identity.Responses;
 using System.ComponentModel.DataAnnotations;
 
 namespace FishUp.Identity.Messages.Commands
 {
-    public class SignInRequest
+    public class SignInCommand : ICommand<SignInResponse>
     {
         [Required]
         public string UsernameOrEmail { get; set; }

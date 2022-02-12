@@ -1,10 +1,14 @@
 using FishUp.Dispatchers;
+using FishUp.Services;
+using FishUp.Services.Abstract;
+using FishUp.Weather.Services;
+using FishUp.Weather.Services.Abstract;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace FishUp.Profile
+namespace FishUp.Weather
 {
     public class Startup
     {
@@ -24,6 +28,11 @@ namespace FishUp.Profile
         public void ConfigureServices(IServiceCollection services)
         {
             services.RegisterMediatR(typeof(Startup));
+            services.AddScoped<IHttpClientService, HttpClientService>();
+            services.AddScoped<ILocationService, LocationService>();
+            services.AddSingleton(Configuration);
+            services.AddAuthorization();
+            services.AddControllers();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>

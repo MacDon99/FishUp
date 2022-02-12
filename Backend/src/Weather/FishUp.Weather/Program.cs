@@ -1,4 +1,4 @@
-namespace FishUp.Profile
+namespace FishUp.Weather
 {
     public class Program
     {

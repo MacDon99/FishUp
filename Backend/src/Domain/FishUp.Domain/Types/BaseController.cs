@@ -18,6 +18,7 @@ namespace FishUp.Domain.Types
         private JwtSecurityToken GetDecodedToken() => new JwtSecurityTokenHandler().ReadJwtToken(GetToken());
         protected Guid GetUserId() => GetDecodedToken().Claims.First(claim => claim.Type == JwtRegisteredClaimNames.Sub).Value.ToGuid();
         protected string GetUserName() => GetDecodedToken().Claims.First(claim => claim.Type == ClaimTypes.Name).Value;
+        protected string GetIP() => HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString();
         protected string GetRole() => GetDecodedToken().Claims.First(claim => claim.Type == ClaimTypes.Role).Value;
     }
 }

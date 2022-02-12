@@ -33,7 +33,6 @@ namespace FishUp.Trip
 
             AddServicesForEnvironment(services);
 
-
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
                 {

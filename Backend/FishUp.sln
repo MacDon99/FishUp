@@ -78,13 +78,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Identity.Models", "s
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Trip", "Trip", "{52CB3777-3F8C-4FAE-9CE5-41FF7FEFDAC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Trip.Models", "src\Trip\FishUp.Trip.Models\FishUp.Trip.Models.csproj", "{DE5E9306-5433-49D6-AE73-A03402FD06DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Trip.Models", "src\Trip\FishUp.Trip.Models\FishUp.Trip.Models.csproj", "{DE5E9306-5433-49D6-AE73-A03402FD06DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Trip.Unit.Tests", "src\Trip\FishUp.Trip.Unit.Tests\FishUp.Trip.Unit.Tests.csproj", "{7CE9AD74-2493-46C0-AA47-1F915479719C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Trip.Unit.Tests", "src\Trip\FishUp.Trip.Unit.Tests\FishUp.Trip.Unit.Tests.csproj", "{7CE9AD74-2493-46C0-AA47-1F915479719C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Trip.Integration.Tests", "src\Trip\FishUp.Trip.Integration.Tests\FishUp.Trip.Integration.Tests.csproj", "{83160F6C-BBA1-4E70-8A1A-B2EFEA5F8D1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Trip.Integration.Tests", "src\Trip\FishUp.Trip.Integration.Tests\FishUp.Trip.Integration.Tests.csproj", "{83160F6C-BBA1-4E70-8A1A-B2EFEA5F8D1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Trip", "src\Trip\FishUp.Trip\FishUp.Trip.csproj", "{E3041E64-1797-45DF-8D1F-E6460C63BC9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Trip", "src\Trip\FishUp.Trip\FishUp.Trip.csproj", "{E3041E64-1797-45DF-8D1F-E6460C63BC9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Weather.Models", "FishUp.Weather.Models\FishUp.Weather.Models.csproj", "{BFC6D839-533A-43B2-A062-181E1DDE7829}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -444,6 +446,18 @@ Global
 		{E3041E64-1797-45DF-8D1F-E6460C63BC9A}.Release|x64.Build.0 = Release|Any CPU
 		{E3041E64-1797-45DF-8D1F-E6460C63BC9A}.Release|x86.ActiveCfg = Release|Any CPU
 		{E3041E64-1797-45DF-8D1F-E6460C63BC9A}.Release|x86.Build.0 = Release|Any CPU
+		{BFC6D839-533A-43B2-A062-181E1DDE7829}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFC6D839-533A-43B2-A062-181E1DDE7829}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFC6D839-533A-43B2-A062-181E1DDE7829}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BFC6D839-533A-43B2-A062-181E1DDE7829}.Debug|x64.Build.0 = Debug|Any CPU
+		{BFC6D839-533A-43B2-A062-181E1DDE7829}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BFC6D839-533A-43B2-A062-181E1DDE7829}.Debug|x86.Build.0 = Debug|Any CPU
+		{BFC6D839-533A-43B2-A062-181E1DDE7829}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFC6D839-533A-43B2-A062-181E1DDE7829}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFC6D839-533A-43B2-A062-181E1DDE7829}.Release|x64.ActiveCfg = Release|Any CPU
+		{BFC6D839-533A-43B2-A062-181E1DDE7829}.Release|x64.Build.0 = Release|Any CPU
+		{BFC6D839-533A-43B2-A062-181E1DDE7829}.Release|x86.ActiveCfg = Release|Any CPU
+		{BFC6D839-533A-43B2-A062-181E1DDE7829}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -487,6 +501,7 @@ Global
 		{7CE9AD74-2493-46C0-AA47-1F915479719C} = {52CB3777-3F8C-4FAE-9CE5-41FF7FEFDAC0}
 		{83160F6C-BBA1-4E70-8A1A-B2EFEA5F8D1B} = {52CB3777-3F8C-4FAE-9CE5-41FF7FEFDAC0}
 		{E3041E64-1797-45DF-8D1F-E6460C63BC9A} = {52CB3777-3F8C-4FAE-9CE5-41FF7FEFDAC0}
+		{BFC6D839-533A-43B2-A062-181E1DDE7829} = {5C35028B-2C8E-4889-98E5-9C9D2F7AB983}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C2F49EE3-9DA5-4E74-9328-468BE124F6DB}

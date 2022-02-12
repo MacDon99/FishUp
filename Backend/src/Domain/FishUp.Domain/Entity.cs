@@ -7,18 +7,30 @@ namespace FishUp.Domain
         public Guid Id { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime? EditDate { get; set; }
+        public bool Active { get; set; }
 
         public Entity()
         {
-            CreateDate = DateTime.Now;
+            CreateDate = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc);
+            Active = true;
         }
 
         protected void UpdateEntity()
         {
-            EditDate = DateTime.Now;
+            EditDate = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc);
         }
 
         public abstract void Valid();
+
+        public void Deactivate()
+        {
+            Active = false;
+        }
+
+        public void Activate()
+        {
+            Active = true;
+        }
 
         public bool Equals(Entity other)
         {

@@ -3,6 +3,7 @@ using FishUp.Domain.Types;
 using FishUp.Post.Models;
 using FishUp.Post.Models.Messages.Queries;
 using FishUp.Post.Models.Responses.Queries;
+using Microsoft.EntityFrameworkCore;
 
 namespace FishUp.Post.Handlers.Queries
 {
@@ -16,7 +17,7 @@ namespace FishUp.Post.Handlers.Queries
 
         public async Task<PostDetails> Handle(GetPostDetailsQuery request, CancellationToken cancellationToken)
         {
-            var post = _appDbContext.Posts.Join(_appDbContext.Users, post => post.AuthorId, user => user.IdentityUserId, (post, user) => new
+            var post = await _appDbContext.Posts.Join(_appDbContext.Users, post => post.AuthorId, user => user.IdentityUserId, (post, user) => new
             {
                 Post = post,
                 User = user
@@ -26,7 +27,7 @@ namespace FishUp.Post.Handlers.Queries
                 Content = group.Post.Content,
                 CreatedDate = group.Post.CreateDate,
                 Photos = null,
-            }).FirstOrDefault();
+            }).FirstOrDefaultAsync();
 
             if (post is null)
             {

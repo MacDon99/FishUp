@@ -34,47 +34,57 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Mailing.Integration.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Mailing.Unit.Tests", "src\Mailing\FishUp.Mailing.Unit.Tests\FishUp.Mailing.Unit.Tests.csproj", "{FD0D122F-FAEA-46F1-A39A-E4276EDFCB99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.TestUtils", "src\Common\FishUp.TestUtils\FishUp.TestUtils.csproj", "{489B3328-D78C-4BE5-AC02-4AADE5A69FC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.TestUtils", "src\Common\FishUp.TestUtils\FishUp.TestUtils.csproj", "{489B3328-D78C-4BE5-AC02-4AADE5A69FC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Services", "src\Common\FishUp.Services\FishUp.Services.csproj", "{2A590963-5F07-4B7C-A57A-BD2BB0785D08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Services", "src\Common\FishUp.Services\FishUp.Services.csproj", "{2A590963-5F07-4B7C-A57A-BD2BB0785D08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Models", "src\Common\FishUp.Models\FishUp.Models.csproj", "{EDA4094C-7E25-4F57-9B10-D93F5223E7CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Models", "src\Common\FishUp.Models\FishUp.Models.csproj", "{EDA4094C-7E25-4F57-9B10-D93F5223E7CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Dispatchers", "src\Common\FishUp.Dispatchers\FishUp.Dispatchers.csproj", "{08F6ECCD-C3BE-455D-918F-8F8CDC309C35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Dispatchers", "src\Common\FishUp.Dispatchers\FishUp.Dispatchers.csproj", "{08F6ECCD-C3BE-455D-918F-8F8CDC309C35}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Post", "Post", "{A0E071E7-8AD2-4691-8BA4-18DD13C75A01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Post", "src\Post\FishUp.Post\FishUp.Post.csproj", "{9BD31010-8CB8-424D-9B1F-376FE1A96B58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Post", "src\Post\FishUp.Post\FishUp.Post.csproj", "{9BD31010-8CB8-424D-9B1F-376FE1A96B58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Post.Unit.Tests", "src\Post\FishUp.Post.Unit.Tests\FishUp.Post.Unit.Tests.csproj", "{2E4FB2D7-F0F6-4F51-BC0C-26DE46AEA101}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Post.Unit.Tests", "src\Post\FishUp.Post.Unit.Tests\FishUp.Post.Unit.Tests.csproj", "{2E4FB2D7-F0F6-4F51-BC0C-26DE46AEA101}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Post.Integration.Tests", "src\Post\FishUp.Post.Integration.Tests\FishUp.Post.Integration.Tests.csproj", "{2FD8B8E9-1E93-417B-9573-192EF43ACDF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Post.Integration.Tests", "src\Post\FishUp.Post.Integration.Tests\FishUp.Post.Integration.Tests.csproj", "{2FD8B8E9-1E93-417B-9573-192EF43ACDF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Profile", "src\Profile\FishUp.Profile\FishUp.Profile.csproj", "{7A11AAEF-A2EE-4D66-ACF5-C67057754E08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Profile", "src\Profile\FishUp.Profile\FishUp.Profile.csproj", "{7A11AAEF-A2EE-4D66-ACF5-C67057754E08}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Profile", "Profile", "{A5838991-D776-40F0-AE77-8A91DC1546F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Profile.Unit.Tests", "src\Profile\FishUp.Profile.Unit.Tests\FishUp.Profile.Unit.Tests.csproj", "{0587DCF0-1C79-4C59-A534-A15C46164ED6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Profile.Unit.Tests", "src\Profile\FishUp.Profile.Unit.Tests\FishUp.Profile.Unit.Tests.csproj", "{0587DCF0-1C79-4C59-A534-A15C46164ED6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Profile.Integration.Tests", "src\Profile\FishUp.Profile.Integration.Tests\FishUp.Profile.Integration.Tests.csproj", "{DFC9A6EB-3E64-44A9-B031-7DEAB260B6B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Profile.Integration.Tests", "src\Profile\FishUp.Profile.Integration.Tests\FishUp.Profile.Integration.Tests.csproj", "{DFC9A6EB-3E64-44A9-B031-7DEAB260B6B9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Weather", "Weather", "{5C35028B-2C8E-4889-98E5-9C9D2F7AB983}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Weather", "src\Weather\FishUp.Weather\FishUp.Weather.csproj", "{05F646EE-454C-49A8-ADF5-5DE5EEA0356B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Weather", "src\Weather\FishUp.Weather\FishUp.Weather.csproj", "{05F646EE-454C-49A8-ADF5-5DE5EEA0356B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Weather.Unit.Tests", "src\Weather\FishUp.Weather.Unit.Tests\FishUp.Weather.Unit.Tests.csproj", "{54926403-8007-4F84-BD33-6D8926D05E31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Weather.Unit.Tests", "src\Weather\FishUp.Weather.Unit.Tests\FishUp.Weather.Unit.Tests.csproj", "{54926403-8007-4F84-BD33-6D8926D05E31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Weather.Integration.Tests", "src\Weather\FishUp.Weather.Integration.Tests\FishUp.Weather.Integration.Tests.csproj", "{ABB23384-9256-4F6C-BCCA-C76267BA0131}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Weather.Integration.Tests", "src\Weather\FishUp.Weather.Integration.Tests\FishUp.Weather.Integration.Tests.csproj", "{ABB23384-9256-4F6C-BCCA-C76267BA0131}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Identity.Unit.Tests", "src\Identity\FishUp.Identity.Unit.Tests\FishUp.Identity.Unit.Tests.csproj", "{F25A03F3-9A51-49AA-88BD-4320E88B9AD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Identity.Unit.Tests", "src\Identity\FishUp.Identity.Unit.Tests\FishUp.Identity.Unit.Tests.csproj", "{F25A03F3-9A51-49AA-88BD-4320E88B9AD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Identity.Integration.Tests", "src\Identity\FishUp.Identity.Integration.Tests\FishUp.Identity.Integration.Tests.csproj", "{3C41B1B1-990A-468C-9E88-F3C7F0C1D614}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Identity.Integration.Tests", "src\Identity\FishUp.Identity.Integration.Tests\FishUp.Identity.Integration.Tests.csproj", "{3C41B1B1-990A-468C-9E88-F3C7F0C1D614}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Extensions", "src\Common\FishUp.Extensions\FishUp.Extensions.csproj", "{98945D25-351C-450B-8C7A-ED7AFA0EAFE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Extensions", "src\Common\FishUp.Extensions\FishUp.Extensions.csproj", "{98945D25-351C-450B-8C7A-ED7AFA0EAFE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Post.Models", "src\Post\FishUp.Post.Models\FishUp.Post.Models.csproj", "{5C5760D3-7458-4B41-A8F4-A514BCA48005}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Post.Models", "src\Post\FishUp.Post.Models\FishUp.Post.Models.csproj", "{5C5760D3-7458-4B41-A8F4-A514BCA48005}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Identity.Models", "src\Identity\FishUp.Identity.Models\FishUp.Identity.Models.csproj", "{1FBB5CDA-B9E6-4C00-9AD6-D8C19027DCFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FishUp.Identity.Models", "src\Identity\FishUp.Identity.Models\FishUp.Identity.Models.csproj", "{1FBB5CDA-B9E6-4C00-9AD6-D8C19027DCFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Trip", "Trip", "{52CB3777-3F8C-4FAE-9CE5-41FF7FEFDAC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Trip.Models", "src\Trip\FishUp.Trip.Models\FishUp.Trip.Models.csproj", "{DE5E9306-5433-49D6-AE73-A03402FD06DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Trip.Unit.Tests", "src\Trip\FishUp.Trip.Unit.Tests\FishUp.Trip.Unit.Tests.csproj", "{7CE9AD74-2493-46C0-AA47-1F915479719C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Trip.Integration.Tests", "src\Trip\FishUp.Trip.Integration.Tests\FishUp.Trip.Integration.Tests.csproj", "{83160F6C-BBA1-4E70-8A1A-B2EFEA5F8D1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishUp.Trip", "src\Trip\FishUp.Trip\FishUp.Trip.csproj", "{E3041E64-1797-45DF-8D1F-E6460C63BC9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -386,6 +396,54 @@ Global
 		{1FBB5CDA-B9E6-4C00-9AD6-D8C19027DCFF}.Release|x64.Build.0 = Release|Any CPU
 		{1FBB5CDA-B9E6-4C00-9AD6-D8C19027DCFF}.Release|x86.ActiveCfg = Release|Any CPU
 		{1FBB5CDA-B9E6-4C00-9AD6-D8C19027DCFF}.Release|x86.Build.0 = Release|Any CPU
+		{DE5E9306-5433-49D6-AE73-A03402FD06DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE5E9306-5433-49D6-AE73-A03402FD06DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE5E9306-5433-49D6-AE73-A03402FD06DD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DE5E9306-5433-49D6-AE73-A03402FD06DD}.Debug|x64.Build.0 = Debug|Any CPU
+		{DE5E9306-5433-49D6-AE73-A03402FD06DD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DE5E9306-5433-49D6-AE73-A03402FD06DD}.Debug|x86.Build.0 = Debug|Any CPU
+		{DE5E9306-5433-49D6-AE73-A03402FD06DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE5E9306-5433-49D6-AE73-A03402FD06DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE5E9306-5433-49D6-AE73-A03402FD06DD}.Release|x64.ActiveCfg = Release|Any CPU
+		{DE5E9306-5433-49D6-AE73-A03402FD06DD}.Release|x64.Build.0 = Release|Any CPU
+		{DE5E9306-5433-49D6-AE73-A03402FD06DD}.Release|x86.ActiveCfg = Release|Any CPU
+		{DE5E9306-5433-49D6-AE73-A03402FD06DD}.Release|x86.Build.0 = Release|Any CPU
+		{7CE9AD74-2493-46C0-AA47-1F915479719C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CE9AD74-2493-46C0-AA47-1F915479719C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CE9AD74-2493-46C0-AA47-1F915479719C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7CE9AD74-2493-46C0-AA47-1F915479719C}.Debug|x64.Build.0 = Debug|Any CPU
+		{7CE9AD74-2493-46C0-AA47-1F915479719C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7CE9AD74-2493-46C0-AA47-1F915479719C}.Debug|x86.Build.0 = Debug|Any CPU
+		{7CE9AD74-2493-46C0-AA47-1F915479719C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CE9AD74-2493-46C0-AA47-1F915479719C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CE9AD74-2493-46C0-AA47-1F915479719C}.Release|x64.ActiveCfg = Release|Any CPU
+		{7CE9AD74-2493-46C0-AA47-1F915479719C}.Release|x64.Build.0 = Release|Any CPU
+		{7CE9AD74-2493-46C0-AA47-1F915479719C}.Release|x86.ActiveCfg = Release|Any CPU
+		{7CE9AD74-2493-46C0-AA47-1F915479719C}.Release|x86.Build.0 = Release|Any CPU
+		{83160F6C-BBA1-4E70-8A1A-B2EFEA5F8D1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83160F6C-BBA1-4E70-8A1A-B2EFEA5F8D1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83160F6C-BBA1-4E70-8A1A-B2EFEA5F8D1B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{83160F6C-BBA1-4E70-8A1A-B2EFEA5F8D1B}.Debug|x64.Build.0 = Debug|Any CPU
+		{83160F6C-BBA1-4E70-8A1A-B2EFEA5F8D1B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{83160F6C-BBA1-4E70-8A1A-B2EFEA5F8D1B}.Debug|x86.Build.0 = Debug|Any CPU
+		{83160F6C-BBA1-4E70-8A1A-B2EFEA5F8D1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83160F6C-BBA1-4E70-8A1A-B2EFEA5F8D1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83160F6C-BBA1-4E70-8A1A-B2EFEA5F8D1B}.Release|x64.ActiveCfg = Release|Any CPU
+		{83160F6C-BBA1-4E70-8A1A-B2EFEA5F8D1B}.Release|x64.Build.0 = Release|Any CPU
+		{83160F6C-BBA1-4E70-8A1A-B2EFEA5F8D1B}.Release|x86.ActiveCfg = Release|Any CPU
+		{83160F6C-BBA1-4E70-8A1A-B2EFEA5F8D1B}.Release|x86.Build.0 = Release|Any CPU
+		{E3041E64-1797-45DF-8D1F-E6460C63BC9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3041E64-1797-45DF-8D1F-E6460C63BC9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3041E64-1797-45DF-8D1F-E6460C63BC9A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E3041E64-1797-45DF-8D1F-E6460C63BC9A}.Debug|x64.Build.0 = Debug|Any CPU
+		{E3041E64-1797-45DF-8D1F-E6460C63BC9A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E3041E64-1797-45DF-8D1F-E6460C63BC9A}.Debug|x86.Build.0 = Debug|Any CPU
+		{E3041E64-1797-45DF-8D1F-E6460C63BC9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3041E64-1797-45DF-8D1F-E6460C63BC9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3041E64-1797-45DF-8D1F-E6460C63BC9A}.Release|x64.ActiveCfg = Release|Any CPU
+		{E3041E64-1797-45DF-8D1F-E6460C63BC9A}.Release|x64.Build.0 = Release|Any CPU
+		{E3041E64-1797-45DF-8D1F-E6460C63BC9A}.Release|x86.ActiveCfg = Release|Any CPU
+		{E3041E64-1797-45DF-8D1F-E6460C63BC9A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -424,6 +482,11 @@ Global
 		{98945D25-351C-450B-8C7A-ED7AFA0EAFE6} = {F2950018-0E87-4BC7-A71E-EB4E92A4C7CC}
 		{5C5760D3-7458-4B41-A8F4-A514BCA48005} = {A0E071E7-8AD2-4691-8BA4-18DD13C75A01}
 		{1FBB5CDA-B9E6-4C00-9AD6-D8C19027DCFF} = {D971384D-7774-4B9A-9473-1DE299352422}
+		{52CB3777-3F8C-4FAE-9CE5-41FF7FEFDAC0} = {D476A359-0FAF-4EAA-84E9-92DEF7C2D2E6}
+		{DE5E9306-5433-49D6-AE73-A03402FD06DD} = {52CB3777-3F8C-4FAE-9CE5-41FF7FEFDAC0}
+		{7CE9AD74-2493-46C0-AA47-1F915479719C} = {52CB3777-3F8C-4FAE-9CE5-41FF7FEFDAC0}
+		{83160F6C-BBA1-4E70-8A1A-B2EFEA5F8D1B} = {52CB3777-3F8C-4FAE-9CE5-41FF7FEFDAC0}
+		{E3041E64-1797-45DF-8D1F-E6460C63BC9A} = {52CB3777-3F8C-4FAE-9CE5-41FF7FEFDAC0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C2F49EE3-9DA5-4E74-9328-468BE124F6DB}

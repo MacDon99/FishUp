@@ -61,7 +61,6 @@ namespace FishUp.Mailing
                     };
                 });
 
-
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FishUp.Mailing", Version = "v1" });

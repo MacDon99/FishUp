@@ -17,7 +17,7 @@ namespace FishUp.Post.Handlers.Commands
 
         public async Task<Unit> Handle(UnlikePostCommand request, CancellationToken cancellationToken)
         {
-            var post = _dbContext.Posts.Include(post => post.Likers).Single(post => post.Id == request.PostId);
+            var post = await _dbContext.Posts.Include(post => post.Likers).SingleAsync(post => post.Id == request.PostId);
             post.RemoveLike(request.UserId);
             await _dbContext.SaveChangesAsync();
             return Unit.Value;

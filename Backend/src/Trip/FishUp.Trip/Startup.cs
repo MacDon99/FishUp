@@ -1,12 +1,13 @@
-using System.Text;
 using FishUp.Dispatchers;
 using FishUp.Post.Models;
-using MediatR;
+using FishUp.Services;
+using FishUp.Services.Abstract;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
-namespace FishUp.Post
+namespace FishUp.Trip
 {
     public class Startup
     {
@@ -28,7 +29,10 @@ namespace FishUp.Post
             services.RegisterMediatR(typeof(Startup));
             services.AddControllers();
 
+            services.AddScoped<IDateTimeProvider, DateTimeProvider>();
+
             AddServicesForEnvironment(services);
+
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
@@ -65,7 +69,7 @@ namespace FishUp.Post
 
         protected virtual void AddServicesForEnvironment(IServiceCollection services)
         {
-            services.AddDbContext<PostDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<TripDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
     }
 }

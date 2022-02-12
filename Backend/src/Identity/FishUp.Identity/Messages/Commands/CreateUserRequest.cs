@@ -1,5 +1,5 @@
+using FishUp.Dispatchers;
 using System.ComponentModel.DataAnnotations;
-using FishUp.Common.Dispatchers;
 
 namespace FishUp.Identity.Messages.Commands
 {

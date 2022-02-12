@@ -330,3 +330,4 @@ ASALocalRun/
 .mfractor/
 Backend/src/Identity/FishUp.Identity/Logs/Log-20210320.txt
 /Backend/src/Identity/FishUp.Identity/Logs
+/Backend/src/Core/FishUp.Core/appsettings.Development.json

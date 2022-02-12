@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace FishUp.Core.Controllers
 {
     [ApiController]
-    [Route("/health")]
+    [Route("/core/health")]
     public class HealthController : ControllerBase
     {
         [Route("check")]

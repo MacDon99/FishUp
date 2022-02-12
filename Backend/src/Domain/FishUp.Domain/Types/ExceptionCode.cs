@@ -6,6 +6,7 @@ namespace FishUp.Domain.Types
         NotExists = 2,
         Unauthorized = 3,
         InvalidValue = 4,
-        CanNotBeNull = 5
+        CanNotBeNull = 5,
+        ExternalServiceError = 6
     }
 }

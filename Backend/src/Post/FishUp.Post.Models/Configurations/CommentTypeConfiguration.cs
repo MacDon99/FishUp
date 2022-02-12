@@ -1,0 +1,18 @@
+﻿using FishUp.Models.Types;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace FishUp.Post.Models.Configurations
+{
+    public class CommentTypeConfiguration : IEntityTypeConfiguration<Comment>
+    {
+        public string Table => "Comments";
+        public string Schema => "mutual";
+
+        public void Configure(EntityTypeBuilder<Comment> builder)
+        {
+            builder.ToTable(Table, Schema);
+            builder.HasKey(entity => entity.Id);
+        }
+    }
+}

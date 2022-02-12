@@ -2,17 +2,15 @@ using System;
 
 namespace FishUp.Domain.Types
 {
-    public class ServerException : Exception
+    public class ServerException : BaseException
     {
-        public ExceptionCode Code { get; }
-
-        public ServerException(ExceptionCode code)
+        public ServerException(ExceptionCode code): base(code)
         {
-            Code = code;
+            
         }
-        public ServerException(ExceptionCode code, string message) : base(message)
+        public ServerException(ExceptionCode code, string message): base(code, message)
         {
-            Code = code;
+            
         }
     }
 }

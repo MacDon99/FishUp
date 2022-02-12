@@ -1,15 +1,13 @@
 using System;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Transactions;
 using FishUp.Common.DTO;
-using FishUp.Common.Services;
 using FishUp.Domain.Types;
 using FishUp.Identity.Infrastructure.EF;
 using FishUp.Identity.Messages.Commands;
 using FishUp.Identity.Responses;
+using FishUp.Services;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -77,6 +75,11 @@ namespace FishUp.Identity.Infrastructure
 
         public async Task<SignInResponse> SignInAsync(SignInRequest request, CancellationToken cancellationToken)
         {
+            if(request.Password != request.RepeatPassword)
+            {
+                throw new ValidationException(ExceptionCode.InvalidValue, "Password must be equal to repeat password");
+            }
+
             var identityUser = await _userManager.Users.FirstOrDefaultAsync(u =>
                 u.NormalizedEmail == request.UsernameOrEmail.ToUpper() ||
                 u.NormalizedUserName == request.UsernameOrEmail.ToUpper());

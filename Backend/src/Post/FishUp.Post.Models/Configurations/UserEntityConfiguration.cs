@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace FishUp.Profile.Models.Configurations
+namespace FishUp.Post.Models.Configurations
 {
     public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User>
     {

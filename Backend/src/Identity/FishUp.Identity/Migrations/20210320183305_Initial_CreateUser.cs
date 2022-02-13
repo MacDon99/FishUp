@@ -11,7 +11,7 @@ namespace FishUp.Identity.Migrations
                 name: "identity");
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Users",
                 schema: "identity",
                 columns: table => new
                 {
@@ -34,7 +34,7 @@ namespace FishUp.Identity.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "User",
+                name: "Users",
                 schema: "identity");
         }
     }

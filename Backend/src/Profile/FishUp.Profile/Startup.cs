@@ -1,8 +1,9 @@
-using FishUp.Dispatchers;
-using MediatR;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using FishUp.Dispatchers;
+using FishUp.Profile.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace FishUp.Profile
 {
@@ -24,6 +25,9 @@ namespace FishUp.Profile
         public void ConfigureServices(IServiceCollection services)
         {
             services.RegisterMediatR(typeof(Startup));
+            services.AddControllers();
+
+            AddServicesForEnvironment(services);
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
@@ -56,6 +60,11 @@ namespace FishUp.Profile
             {
                 endpoints.MapControllers();
             });
+        }
+
+        protected virtual void AddServicesForEnvironment(IServiceCollection services)
+        {
+            services.AddDbContext<ProfileDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
     }
 }

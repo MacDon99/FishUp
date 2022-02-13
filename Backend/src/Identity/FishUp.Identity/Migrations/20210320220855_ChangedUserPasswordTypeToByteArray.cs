@@ -10,24 +10,24 @@ namespace FishUp.Identity.Migrations
             migrationBuilder.DropColumn(
                 name: "PasswordHash",
                 schema: "identity",
-                table: "User");
+                table: "Users");
 
             migrationBuilder.DropColumn(
                 name: "SecurityStamp",
                 schema: "identity",
-                table: "User");
+                table: "Users");
 
             migrationBuilder.AddColumn<byte[]>(
                 name: "PasswordHash",
                 schema: "identity",
-                table: "User",
+                table: "Users",
                 type: "varbinary(max)",
                 nullable: true);
 
             migrationBuilder.AddColumn<byte[]>(
                 name: "SecurityStamp",
                 schema: "identity",
-                table: "User",
+                table: "Users",
                 type: "varbinary(max)",
                 nullable: true);
         }
@@ -37,24 +37,24 @@ namespace FishUp.Identity.Migrations
             migrationBuilder.DropColumn(
                 name: "PasswordHash",
                 schema: "identity",
-                table: "User");
+                table: "Users");
 
             migrationBuilder.DropColumn(
                 name: "SecurityStamp",
                 schema: "identity",
-                table: "User");
+                table: "Users");
 
             migrationBuilder.AddColumn<string>(
                 name: "PasswordHash",
                 schema: "identity",
-                table: "User",
+                table: "Users",
                 type: "nvarchar(max)",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
                 name: "SecurityStamp",
                 schema: "identity",
-                table: "User",
+                table: "Users",
                 type: "nvarchar(max)",
                 nullable: true);
         }

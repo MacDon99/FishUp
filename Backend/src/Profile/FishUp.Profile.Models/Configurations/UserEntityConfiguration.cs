@@ -1,8 +1,8 @@
-using FishUp.Domain.Types;
+﻿using FishUp.Domain.Types;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace FishUp.Identity.Infrastructure.EF
+namespace FishUp.Post.Models.Configurations
 {
     public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User>
     {

@@ -34,6 +34,7 @@
     <ProjectReference Include="..\..\Common\FishUp.Dispatchers\FishUp.Dispatchers.csproj" />
     <ProjectReference Include="..\..\Common\FishUp.Services\FishUp.Services.csproj" />
     <ProjectReference Include="..\..\Domain\FishUp.Domain\FishUp.Domain.csproj" />
+    <ProjectReference Include="..\FishUp.Weather.Models\FishUp.Weather.Models.csproj" />
   </ItemGroup>
 
 </Project>

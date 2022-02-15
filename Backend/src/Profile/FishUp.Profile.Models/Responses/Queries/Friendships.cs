@@ -1,6 +1,6 @@
 ﻿using FishUp.Dispatchers;
 
-namespace FishUp.Profile.Models.Responses
+namespace FishUp.Profile.Models.Responses.Queries
 {
     public class Friendships : IQueryResponse
     {

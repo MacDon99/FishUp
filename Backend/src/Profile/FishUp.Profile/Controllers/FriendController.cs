@@ -9,7 +9,7 @@ namespace FishUp.Post.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("api/friend")]
+    [Route("api/profile/friend")]
     public class FriendController : BaseController
     {
         private readonly IMediator _mediator;

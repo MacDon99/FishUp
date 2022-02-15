@@ -1,0 +1,25 @@
+<div class="create-profile-page">
+  <ion-grid class="full-height">
+    <ion-row class="full-height">
+      <ion-col align-self-center class="full-height">
+        <div class="create-profile-panel">
+          <h3>Utwórz profil</h3>
+          <br>
+          <form [formGroup]="form">
+            <ion-input type="text" formControlName="city" placeholder="Miasto" class="base-input"></ion-input>
+            <ion-input type="text" formControlName="voivodeship" placeholder="Województwo" class="base-input"></ion-input>
+            <ion-input type="text" formControlName="birthDate" placeholder="Data urodzenia" class="base-input"></ion-input>
+            <ion-input type="text" formControlName="profession" placeholder="Zawód" class="base-input"></ion-input>
+            <ion-item style="border: none !important;">
+              <ion-label>Chęć na dalsze podróże</ion-label>
+              <ion-checkbox color="dark" formControlName="willToTravelFar"></ion-checkbox>
+            </ion-item>
+          </form>
+          <div class="fishup-btn primary" (click)="createProfile()">
+            Zaczynamy!
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

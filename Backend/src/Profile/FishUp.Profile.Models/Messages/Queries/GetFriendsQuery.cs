@@ -1,5 +1,5 @@
 ﻿using FishUp.Dispatchers;
-using FishUp.Profile.Models.Responses;
+using FishUp.Profile.Models.Responses.Queries;
 
 namespace FishUp.Profile.Models.Messages.Queries
 {

@@ -1,44 +1,45 @@
-import { HttpService } from './../../services/http-service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AlertController, Loading, LoadingController } from 'ionic-angular';
+import { HttpService } from '../../services/http-service';
 
 @Component({
-  selector: 'sign-up-page',
-  templateUrl: './sign-up.page.html'
+  selector: 'create-profile',
+  templateUrl: './create-profile.page.html'
 })
-export class SignUpPage implements OnInit {
-
+export class CreateProfilePage implements OnInit {
   form: FormGroup;
-  @Output() onGoBackEmit = new EventEmitter();
+
+  @Output() onCreatedProfileEmit = new EventEmitter();
   constructor(private httpService: HttpService, private loadingController: LoadingController, private alertController: AlertController) { }
 
   ngOnInit() {
-    this.form = this.getFormGroup()
+    this.form = this.getFormGroup();
   }
 
   getFormGroup(): FormGroup {
     return new FormGroup({
-      username: new FormControl(),
-      email: new FormControl(),
-      password: new FormControl(),
-      firstName: new FormControl(),
-      lastName: new FormControl()
+      city: new FormControl(),
+      voivodeship: new FormControl(),
+      birthDate: new FormControl(),
+      profession: new FormControl(),
+      willToTravelFar: new FormControl(false)
     });
   }
 
-  async register() {
-    let loader: Loading = await this.loadingController.create({
+  createProfile() {
+    let loader: Loading = this.loadingController.create({
       content: 'Proszę czekać...',
       duration: 60000
     });
 
     loader.present();
 
-    this.httpService.signUp(this.form.value).subscribe((next) => {
+    this.httpService.createProfile(this.form.value).subscribe(() => {
       loader.dismiss();
-      this.goBack();
+      this.onCreatedProfileEmit.emit();
     }, (error) => {
+      console.log(error);
       loader.dismiss();
       const alert = this.alertController.create({
         message: 'Wprowadzono niepoprawne dane.',
@@ -48,9 +49,4 @@ export class SignUpPage implements OnInit {
       alert.present();
     })
   }
-
-  goBack() {
-    this.onGoBackEmit.emit();
-  }
 }
-

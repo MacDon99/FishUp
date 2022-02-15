@@ -1,4 +1,4 @@
-﻿namespace FishUp.Profile.Models.Responses
+﻿namespace FishUp.Profile.Models.Responses.Queries
 {
     public class UserFriend
     {

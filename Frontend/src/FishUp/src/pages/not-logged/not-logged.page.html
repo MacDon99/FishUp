@@ -31,4 +31,7 @@
   <ng-container *ngIf="displaySignInPanel">
     <sign-in-page (onGoBackEmit)="goBack()" (onSignInEmit)="signIn($event)"></sign-in-page>
   </ng-container>
+  <ng-container *ngIf="displayCreateProfilePanel">
+    <create-profile (onCreatedProfileEmit)="createProfile()"></create-profile>
+  </ng-container>
 </div>

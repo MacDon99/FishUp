@@ -1,7 +1,7 @@
 ﻿using FishUp.Dispatchers;
 using FishUp.Profile.Models;
 using FishUp.Profile.Models.Messages.Queries;
-using FishUp.Profile.Models.Responses;
+using FishUp.Profile.Models.Responses.Queries;
 using Microsoft.EntityFrameworkCore;
 
 namespace FishUp.Profile.Handlers.Queries

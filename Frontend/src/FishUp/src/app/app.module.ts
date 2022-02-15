@@ -15,6 +15,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { NotLoggedPage } from '../pages/not-logged/not-logged.page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from  '@angular/common/http';
+import { CreateProfilePage } from '../pages/create-profile/create-profile.page';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpClientModule } from  '@angular/common/http';
     ProfilePage,
     SignInPage,
     SignUpPage,
-    NotLoggedPage
+    NotLoggedPage,
+    CreateProfilePage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import { HttpClientModule } from  '@angular/common/http';
     ProfilePage,
     SignInPage,
     SignUpPage,
-    NotLoggedPage
+    NotLoggedPage,
+    CreateProfilePage
   ],
   providers: [
     StatusBar,

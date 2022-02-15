@@ -4,6 +4,7 @@ using FishUp.Profile.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FishUp.Profile.Models.Migrations
 {
     [DbContext(typeof(ProfileDbContext))]
-    partial class ProfileDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220215214357_AddProfileEntity")]
+    partial class AddProfileEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,7 +127,7 @@ namespace FishUp.Profile.Models.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("BackgroundPhotoId")
+                    b.Property<Guid>("BackgroundPhotoId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("BirthDate")
@@ -145,7 +147,7 @@ namespace FishUp.Profile.Models.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("ProfilePhotoId")
+                    b.Property<Guid>("ProfilePhotoId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("UserId")
@@ -178,11 +180,15 @@ namespace FishUp.Profile.Models.Migrations
                 {
                     b.HasOne("FishUp.Models.Types.StoredFile", "BackgroundPhoto")
                         .WithMany()
-                        .HasForeignKey("BackgroundPhotoId");
+                        .HasForeignKey("BackgroundPhotoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("FishUp.Models.Types.StoredFile", "ProfilePhoto")
                         .WithMany()
-                        .HasForeignKey("ProfilePhotoId");
+                        .HasForeignKey("ProfilePhotoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("BackgroundPhoto");
 

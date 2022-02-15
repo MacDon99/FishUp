@@ -1,4 +1,5 @@
 ﻿using FishUp.Domain.Types;
+using FishUp.Profile.Models.Messages.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +20,6 @@ namespace FishUp.Profile.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetProfileDetails(GetProfileDetailsQuery request)
-            => _mediator.Send(request with { UserId = GetUserId() });
+            => Ok(_mediator.Send(request with { UserId = GetUserId() }));
     }
 }

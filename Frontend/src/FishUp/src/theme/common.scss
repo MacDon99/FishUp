@@ -1,0 +1,55 @@
+.fishup-btn {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: black;
+  border-radius: 20px;
+}
+
+.fishup-btn.primary {
+  background-color: rgb(11, 128, 0);
+  color: white;
+  font-size: large;
+  cursor: pointer;
+}
+
+.fishup-btn.primary:hover {
+  background-color: rgb(15, 177, 0);
+  cursor: pointer;
+}
+
+.fishup-btn.danger {
+  background-color: rgb(255, 0, 0);
+  color: white;
+  font-size: large;
+  cursor: pointer;
+}
+
+.fishup-btn.danger:hover {
+  background-color: rgb(255, 38, 0);
+  cursor: pointer;
+}
+
+.full-height {
+  height: 100%;
+}
+
+body, html {
+  height: 100%;
+}
+
+ion-input {
+  flex:none !important;
+}
+
+input {
+  border-bottom: solid 1px grey !important;
+}
+
+input:focus {
+  border-bottom: solid 2px grey;
+}
+.base-input:focus {
+  background-color: yellow;
+}

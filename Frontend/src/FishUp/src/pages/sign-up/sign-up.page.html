@@ -1,0 +1,26 @@
+<div class="register-page">
+      <ion-grid class="full-height">
+        <ion-row class="full-height">
+          <ion-col align-self-center class="full-height">
+            <div class="register-panel">
+              <h3>Rejestracja</h3>
+              <br>
+              <form [formGroup]="form">
+                <ion-input type="text" formControlName="firstName" placeholder="Imię" class="base-input"></ion-input>
+                <ion-input type="text" formControlName="lastName" placeholder="Nazwisko" class="base-input"></ion-input>
+                <ion-input type="text" formControlName="email" placeholder="Email" class="base-input"></ion-input>
+                <ion-input type="text" formControlName="username" placeholder="Nazwa użytkownika" class="base-input"></ion-input>
+                <ion-input type="password" formControlName="password" placeholder="Hasło" class="base-input"></ion-input>
+              </form>
+              <div class="fishup-btn primary" (click)="register()">
+                Zarejestruj się
+              </div>
+              <br>
+              <div class="fishup-btn danger" (click)="goBack()">
+                Powrót
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+</div>

@@ -110,6 +110,8 @@ namespace FishUp.Identity
                 await context.Response.WriteAsJsonAsync(response);
             }));
 
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

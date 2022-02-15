@@ -39,7 +39,7 @@ namespace FishUp.Trip.Models.Migrations
             migrationBuilder.AddColumn<bool>(
                 name: "Active",
                 schema: "identity",
-                table: "User",
+                table: "Users",
                 type: "bit",
                 nullable: false,
                 defaultValue: false);
@@ -73,7 +73,7 @@ namespace FishUp.Trip.Models.Migrations
             migrationBuilder.DropColumn(
                 name: "Active",
                 schema: "identity",
-                table: "User");
+                table: "Users");
 
             migrationBuilder.DropColumn(
                 name: "TripID",

@@ -5,6 +5,7 @@ namespace FishUp.Identity.Messages.Commands
 {
     public class CreateUserCommand : ICommand
     {
+        public string? SecondName { get; set; }
         [Required]
         public string Username { get; set; }
         [Required]
@@ -13,7 +14,6 @@ namespace FishUp.Identity.Messages.Commands
         public string Password { get; set; }
         [Required]
         public string FirstName { get; set; }
-        public string SecondName { get; set; }
         [Required]
         public string LastName { get; set; }
     }

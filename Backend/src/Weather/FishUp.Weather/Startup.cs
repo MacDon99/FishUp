@@ -5,6 +5,7 @@ using FishUp.Weather.Services;
 using FishUp.Weather.Services.Abstract;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -61,6 +62,18 @@ namespace FishUp.Weather
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseExceptionHandler(c => c.Run(async context =>
+            {
+                var exception = context.Features
+                    .Get<IExceptionHandlerPathFeature>()
+                    .Error;
+                var response = new { Error = exception.Message };
+                await context.Response.WriteAsJsonAsync(response);
+            }));
+
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

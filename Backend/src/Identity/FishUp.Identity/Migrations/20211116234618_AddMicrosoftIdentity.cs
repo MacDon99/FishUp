@@ -10,40 +10,40 @@ namespace FishUp.Identity.Migrations
             migrationBuilder.DropColumn(
                 name: "Email",
                 schema: "identity",
-                table: "User");
+                table: "Users");
 
             migrationBuilder.DropColumn(
                 name: "PasswordHash",
                 schema: "identity",
-                table: "User");
+                table: "Users");
 
             migrationBuilder.DropColumn(
                 name: "SecurityStamp",
                 schema: "identity",
-                table: "User");
+                table: "Users");
 
             migrationBuilder.RenameColumn(
                 name: "Username",
                 schema: "identity",
-                table: "User",
+                table: "Users",
                 newName: "SecondName");
 
             migrationBuilder.RenameColumn(
                 name: "NormalizedUsername",
                 schema: "identity",
-                table: "User",
+                table: "Users",
                 newName: "LastName");
 
             migrationBuilder.RenameColumn(
                 name: "NormalizedEmail",
                 schema: "identity",
-                table: "User",
+                table: "Users",
                 newName: "FirstName");
 
             migrationBuilder.AddColumn<Guid>(
                 name: "IdentityUserId",
                 schema: "identity",
-                table: "User",
+                table: "Users",
                 type: "uniqueidentifier",
                 nullable: false,
                 defaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
@@ -259,44 +259,44 @@ namespace FishUp.Identity.Migrations
             migrationBuilder.DropColumn(
                 name: "IdentityUserId",
                 schema: "identity",
-                table: "User");
+                table: "Users");
 
             migrationBuilder.RenameColumn(
                 name: "SecondName",
                 schema: "identity",
-                table: "User",
+                table: "Users",
                 newName: "Username");
 
             migrationBuilder.RenameColumn(
                 name: "LastName",
                 schema: "identity",
-                table: "User",
+                table: "Users",
                 newName: "NormalizedUsername");
 
             migrationBuilder.RenameColumn(
                 name: "FirstName",
                 schema: "identity",
-                table: "User",
+                table: "Users",
                 newName: "NormalizedEmail");
 
             migrationBuilder.AddColumn<string>(
                 name: "Email",
                 schema: "identity",
-                table: "User",
+                table: "Users",
                 type: "nvarchar(max)",
                 nullable: true);
 
             migrationBuilder.AddColumn<byte[]>(
                 name: "PasswordHash",
                 schema: "identity",
-                table: "User",
+                table: "Users",
                 type: "varbinary(max)",
                 nullable: true);
 
             migrationBuilder.AddColumn<byte[]>(
                 name: "SecurityStamp",
                 schema: "identity",
-                table: "User",
+                table: "Users",
                 type: "varbinary(max)",
                 nullable: true);
         }

@@ -1,0 +1,24 @@
+<div class="login-page">
+  <ion-grid class="full-height">
+    <ion-row class="full-height">
+      <ion-col align-self-center class="full-height">
+        <div class="login-panel">
+          <h3>Logowanie</h3>
+          <br>
+          <form [formGroup]="form">
+            <ion-input type="text" formControlName="usernameOrEmail" placeholder="Nazwa użytkownika" class="base-input"></ion-input>
+            <ion-input type="password" formControlName="password" placeholder="Hasło" class="base-input"></ion-input>
+            <ion-input type="password" formControlName="repeatPassword" placeholder="Powtórz hasło" class="base-input"></ion-input>
+          </form>
+          <div class="fishup-btn primary" (click)="login()">
+            Zaloguj się
+          </div>
+          <br>
+          <div class="fishup-btn danger" (click)="goBack()">
+            Powrót
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

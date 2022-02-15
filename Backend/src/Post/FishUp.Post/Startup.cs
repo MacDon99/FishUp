@@ -3,6 +3,7 @@ using FishUp.Dispatchers;
 using FishUp.Post.Models;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
@@ -57,10 +58,23 @@ namespace FishUp.Post
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseExceptionHandler(c => c.Run(async context =>
+            {
+                var exception = context.Features
+                    .Get<IExceptionHandlerPathFeature>()
+                    .Error;
+                var response = new { Error = exception.Message };
+                await context.Response.WriteAsJsonAsync(response);
+            }));
+
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
         }
 
         protected virtual void AddServicesForEnvironment(IServiceCollection services)

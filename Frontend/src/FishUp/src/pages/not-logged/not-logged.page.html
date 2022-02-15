@@ -1,0 +1,34 @@
+<div class="not-logged-page" *ngIf="displayNotLoggedInPanel" >
+  <ng-container *ngIf="displayLoginOptions">
+      <ion-grid class="full-height">
+        <ion-row class="full-height">
+          <ion-col align-self-center class="full-height">
+            <div class="choose-loging-action-panel">
+              <h3>FishUp</h3>
+              <br>
+              <br>
+              <br>
+              <div class="fishup-btn primary" (click)="showRegisterPage()">
+                Zarejestruj się
+              </div>
+              <div class="divider">
+                <span class="divider-word">
+                  lub
+                </span>
+              </div>
+              <span class="already">Już masz u nas konto?</span>
+              <div class="fishup-btn danger" (click)="showSignInPage()">
+                Zaloguj
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  </ng-container>
+  <ng-container *ngIf="displayRegisterPanel">
+    <sign-up-page (onGoBackEmit)="goBack()"></sign-up-page>
+  </ng-container>
+  <ng-container *ngIf="displaySignInPanel">
+    <sign-in-page (onGoBackEmit)="goBack()" (onSignInEmit)="signIn($event)"></sign-in-page>
+  </ng-container>
+</div>

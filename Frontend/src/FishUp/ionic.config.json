@@ -1,0 +1,7 @@
+{
+  "name": "FishUp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "ionic-angular"
+}

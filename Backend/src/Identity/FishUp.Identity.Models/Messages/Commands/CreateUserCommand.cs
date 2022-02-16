@@ -1,9 +1,10 @@
 using FishUp.Dispatchers;
+using FishUp.Identity.Models.Responses;
 using System.ComponentModel.DataAnnotations;
 
 namespace FishUp.Identity.Messages.Commands
 {
-    public class CreateUserCommand : ICommand
+    public class CreateUserCommand : ICommand<SignUpResponse>
     {
         public string? SecondName { get; set; }
         [Required]

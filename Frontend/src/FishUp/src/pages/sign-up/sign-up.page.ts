@@ -11,6 +11,7 @@ export class SignUpPage implements OnInit {
 
   form: FormGroup;
   @Output() onGoBackEmit = new EventEmitter();
+  @Output() onSignUpEmit = new EventEmitter();
   constructor(private httpService: HttpService, private loadingController: LoadingController, private alertController: AlertController) { }
 
   ngOnInit() {
@@ -37,7 +38,7 @@ export class SignUpPage implements OnInit {
 
     this.httpService.signUp(this.form.value).subscribe((next) => {
       loader.dismiss();
-      this.goBack();
+      this.onSignUpEmit.emit(next);
     }, (error) => {
       loader.dismiss();
       const alert = this.alertController.create({

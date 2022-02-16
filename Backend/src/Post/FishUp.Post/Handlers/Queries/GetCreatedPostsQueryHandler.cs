@@ -26,6 +26,7 @@ namespace FishUp.Post.Handlers.Queries
                   })
                   .Select(group => new CreatedPost()
                   {
+                      Id = group.Post.Id,
                       Author = group.User.FirstName + (group.User.SecondName != null ? " " + group.User.SecondName : string.Empty) + " " + group.User.LastName,
                       Content = group.Post.Content,
                       LikesCount = group.Post.LikesCount,

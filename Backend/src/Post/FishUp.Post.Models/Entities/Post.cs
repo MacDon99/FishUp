@@ -9,7 +9,7 @@ namespace FishUp.Post.Models.Entities
         public string Content { get; set; }
         public Guid AuthorId { get; set; }
         public ICollection<Comment> Comments { get; set; }
-        public ICollection<StoredFile>? Photos { get; set; }
+        public ICollection<StoredFile> Photos { get; set; }
         public virtual ICollection<Liker> Likers { get; set; }
         public virtual ICollection<Disliker> Dislikers { get; set; }
 

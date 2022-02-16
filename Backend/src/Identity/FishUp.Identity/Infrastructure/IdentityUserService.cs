@@ -6,6 +6,7 @@ using FishUp.Common.DTO;
 using FishUp.Domain.Types;
 using FishUp.Identity.Infrastructure.EF;
 using FishUp.Identity.Messages.Commands;
+using FishUp.Identity.Models.Responses;
 using FishUp.Identity.Responses;
 using FishUp.Services;
 using MediatR;
@@ -37,7 +38,7 @@ namespace FishUp.Identity.Infrastructure
             _jwtHandler = jwtHandler;
         }
 
-        public async Task<Unit> CreateUserAsync(CreateUserCommand request, CancellationToken cancellationToken)
+        public async Task<SignUpResponse> CreateUserAsync(CreateUserCommand request, CancellationToken cancellationToken)
         {
             if (await _userManager.Users.AnyAsync(user =>
                 user.NormalizedEmail == request.Email.ToUpper() || user.NormalizedUserName == request.Username.ToUpper(), cancellationToken))
@@ -70,7 +71,21 @@ namespace FishUp.Identity.Infrastructure
             await _identityDbContext.Users.AddAsync(user, cancellationToken);
             await _identityDbContext.SaveChangesAsync(cancellationToken);
 
-            return Unit.Value;
+            var key = _configuration["Jwt:Key"];
+            var issuer = _configuration["Jwt:Issuer"];
+            var audience = _configuration["Jwt:Audience"];
+            var expirationTime = _configuration["Jwt:ExpirationTime"];
+
+            return new SignUpResponse()
+            {
+                Token = _jwtHandler.BuildToken(key, audience, issuer,
+                    Convert.ToInt32(expirationTime), new UserDTO()
+                    {
+                        UserName = identityUser.UserName,
+                        Role = "DefaultRole",
+                        Id = identityUserId
+                    })
+            };
         }
 
         public async Task<SignInResponse> SignInAsync(SignInCommand request, CancellationToken cancellationToken)

@@ -44,6 +44,15 @@ export class NotLoggedPage implements OnInit {
     this.displayLoginOptions = false;
     this.displayRegisterPanel = false;
     this.displaySignInPanel = false;
+    this.displayNotLoggedInPanel = false;
+    this.displayCreateProfilePanel = false;
+  }
+
+  signUp(val: ReceivedToken) {
+    localStorage.setItem('token', val.token);
+    this.displayLoginOptions = false;
+    this.displayRegisterPanel = false;
+    this.displaySignInPanel = false;
     this.displayCreateProfilePanel = true;
   }
 

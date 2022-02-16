@@ -26,7 +26,7 @@
       </ion-grid>
   </ng-container>
   <ng-container *ngIf="displayRegisterPanel">
-    <sign-up-page (onGoBackEmit)="goBack()"></sign-up-page>
+    <sign-up-page (onGoBackEmit)="goBack()" (onSignUpEmit)="signUp($event)"></sign-up-page>
   </ng-container>
   <ng-container *ngIf="displaySignInPanel">
     <sign-in-page (onGoBackEmit)="goBack()" (onSignInEmit)="signIn($event)"></sign-in-page>

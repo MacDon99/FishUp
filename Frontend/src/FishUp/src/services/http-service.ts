@@ -2,9 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BaseUrls } from '../models/base-urls';
 import { CreateProfile } from '../models/create-profile';
+import { ProfileDetails } from '../models/profile-details';
 import { ReceivedToken } from '../models/received-token';
 import { SignIn } from '../models/sign-in';
 import { SignUp } from '../models/sign-up';
+import { UserPosts } from '../models/user-posts';
 
 @Injectable()
 export class HttpService {
@@ -25,11 +27,23 @@ createProfile(model: CreateProfile) {
   return this.httpClient.post(`${BaseUrls.Profile}/`, model, this.addToken());
 }
 
+getProfileDetails() {
+  return this.httpClient.get<ProfileDetails>(`${BaseUrls.Profile}/`, this.addToken());
+}
+
+getUserPosts(userId: string) {
+  return this.httpClient.get<UserPosts>(`${BaseUrls.Post}/created/${userId}`, this.addToken());
+}
+
 private addToken() {
   return {
     headers: {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
+      'Authorization': `Bearer ${this.getToken()}`
     }
   }
+}
+
+private getToken() {
+  return localStorage.getItem('token');
 }
 }

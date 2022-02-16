@@ -1,3 +1,44 @@
-<p>
-  profile works!
-</p>
+<div class="profile-page">
+  <ion-grid class="full-height">
+    <ion-row class="full-height">
+      <ion-col align-self-center class="full-height">
+        <div class="profile-panel">
+          <br>
+          <h3>Profil</h3>
+          <div class="profileData">
+            <div class="data-item">
+              <h5 class="full-width">{{profileDetails.fullName}}</h5>
+            </div>
+            <br>
+            <div class="data-item">
+              <h5 class="firstItem">Zawód:</h5><h5>{{profileDetails?.profession || '-'}}</h5>
+            </div>
+            <div class="data-item">
+              <h5 class="firstItem">Miasto:</h5><h5>{{profileDetails?.city || '-'}}</h5>
+            </div>
+            <div class="data-item">
+              <h5 class="firstItem">Województwo:</h5><h5>{{profileDetails?.voivodeship || '-'}}</h5>
+            </div>
+            <div class="data-item">
+              <h5 class="firstItem">Rok urodzenia:</h5><h5>{{profileDetails?.birthYear || '-'}}</h5>
+            </div>
+            <br>
+            <div class="data-item" *ngIf="profileDetails?.willToTravelFar">
+              <h5 class="full-width">Chętny na dalsze podróże</h5>
+            </div>
+          </div>
+          <h3>Ostatnie posty</h3>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-content>
+      <div class="profileData">
+        <ng-container *ngIf="userPosts?.posts">
+          <div class="data-item" *ngFor="let post of userPosts.posts">
+            <h5 class="full-width">{{post.content}}</h5>
+          </div>
+        </ng-container>
+      </div>
+    </ion-content>
+  </ion-grid>
+</div>

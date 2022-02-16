@@ -17,11 +17,22 @@ namespace FishUp.Profile.Handlers.Queries
 
         public async Task<ProfileDetails> Handle(GetProfileDetailsQuery request, CancellationToken cancellationToken)
         {
-            var userDetails = await _appDbContext.Users
-                .Where(user => user.IdentityUserId == request.UserId)
-                .Select(user => new ProfileDetails()
+            var userDetails = await _appDbContext.Profiles
+                .Join(_appDbContext.Users, profile => profile.UserId, user => user.IdentityUserId,
+                (profile, user) => new
                 {
-                    FullName = user.FirstName + (user.SecondName != null ? " " + user.SecondName : string.Empty) + " " + user.LastName,
+                    Profile = profile,
+                    User = user,
+                })
+                .Where(group => group.User.IdentityUserId == request.UserId)
+                .Select(group => new ProfileDetails()
+                {
+                    FullName = group.User.FirstName + (group.User.SecondName != null ? " " + group.User.SecondName : string.Empty) + " " + group.User.LastName,
+                    City = group.Profile.City,
+                    Profession = group.Profile.Profession,
+                    Voivodeship = group.Profile.Voivodeship,
+                    WillToTravelFar = group.Profile.WillToTravelFar,
+                    BirthYear = group.Profile.BirthDate.Year
                 }).FirstOrDefaultAsync();
 
             if (userDetails is null)

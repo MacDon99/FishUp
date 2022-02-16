@@ -3,11 +3,12 @@ using System.Threading.Tasks;
 using FishUp.Dispatchers;
 using FishUp.Identity.Infrastructure;
 using FishUp.Identity.Messages.Commands;
+using FishUp.Identity.Models.Responses;
 using MediatR;
 
 namespace FishUp.Identity.Handlers
 {
-    public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand>
+    public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand, SignUpResponse>
     {
         private readonly IIdentityUserService _identityUserService;
 
@@ -16,7 +17,7 @@ namespace FishUp.Identity.Handlers
             _identityUserService = identityUserService;
         }
 
-        public Task<Unit> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        public Task<SignUpResponse> Handle(CreateUserCommand request, CancellationToken cancellationToken)
             => _identityUserService.CreateUserAsync(request, cancellationToken);
     }
 }

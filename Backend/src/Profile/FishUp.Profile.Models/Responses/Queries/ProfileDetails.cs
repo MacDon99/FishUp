@@ -7,7 +7,7 @@ namespace FishUp.Profile.Models.Responses.Queries
         public string FullName { get; set; }
         public string City { get; set; }
         public string Voivodeship { get; set; }
-        public string BirthYear { get; set; }
+        public int BirthYear { get; set; }
         public string Profession { get; set; }
         public bool WillToTravelFar { get; set; }
     }

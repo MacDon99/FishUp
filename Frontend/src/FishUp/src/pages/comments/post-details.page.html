@@ -1,0 +1,31 @@
+<div class="comments-page">
+  <ion-grid class="full-height">
+    <ion-row class="full-height">
+      <ion-col align-self-center class="full-height">
+        <div class="comments-panel">
+          <br>
+          <br>
+          <div class="fishup-btn danger go-back" (click)="goBack()">
+            Powrót
+          </div>
+          <h3>{{postDetails?.content || 'Ładowanie'}}</h3>
+          <div class="comments">
+            <div class="comment" *ngFor="let comment of postDetails?.comments">
+              <h5 class="full-width">{{comment?.message}}</h5>
+            </div>
+          </div>
+          <ion-content>
+          </ion-content>
+        </div>
+        <form [formGroup]="form" class="messageForm">
+          <ion-input formControlName="message" type="text" placeholder="Napisz coś..."></ion-input>
+          <div class="fishup-btn comment" (click)="addComment()">
+            Wyślij
+          </div>
+        </form>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+    </ion-row>
+  </ion-grid>
+</div>

@@ -26,7 +26,7 @@ namespace FishUp.Post.Models.Entities
             Photos = photos is null ? Photos : photos.ToList();
         }
 
-        public void AddComent(Comment comment)
+        public void AddComment(Comment comment)
         {
             if (Comments is null)
             { 

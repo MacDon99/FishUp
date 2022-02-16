@@ -1,8 +1,7 @@
 import { ProfileDetails } from './../../models/profile-details';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpService } from '../../services/http-service';
 import { UserPosts } from '../../models/user-posts';
-import jwt_decode from 'jwt-decode';
 import { AccessToken } from '../../models/access-token';
 
 @Component({
@@ -11,6 +10,9 @@ import { AccessToken } from '../../models/access-token';
 })
 export class ProfilePage implements OnInit {
 
+  displayProfilePage = true;
+  displayCommentDetailsPage = false;
+  currentCommentId = '';
   profileDetails: ProfileDetails = new ProfileDetails();
   userPosts: UserPosts = new UserPosts();
   constructor(private httpService: HttpService) {
@@ -28,7 +30,29 @@ export class ProfilePage implements OnInit {
 
   getUserId() {
     var token = localStorage.getItem('token');
-    var decoded = jwt_decode<AccessToken>(token);
-    return decoded.sub;
+    var decoded = this.parseJwt(token);
+    var x = decoded as AccessToken;
+    return x.sub;
   }
+
+  goToComments(id: string) {
+    this.currentCommentId = id;
+    this.displayProfilePage = false;
+    this.displayCommentDetailsPage = true;
+  }
+
+  goBackToProfilePage() {
+    this.currentCommentId = null;
+    this.displayProfilePage = true;
+    this.displayCommentDetailsPage = false;
+  }
+
+  parseJwt (token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return JSON.parse(jsonPayload);
+};
 }

@@ -14,7 +14,8 @@
 
         public Comment(Guid userId, string message)
         {
-
+            AuthorId = userId;
+            Message = message;
         }
     }
 }

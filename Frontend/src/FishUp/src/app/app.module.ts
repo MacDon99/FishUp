@@ -1,3 +1,4 @@
+import { PostDetailsPage } from '../pages/comments/post-details.page';
 import { HttpService } from './../services/http-service';
 import { SignUpPage } from './../pages/sign-up/sign-up.page';
 import { SignInPage } from './../pages/sign-in/sign-in.page';
@@ -26,7 +27,8 @@ import { CreateProfilePage } from '../pages/create-profile/create-profile.page';
     SignInPage,
     SignUpPage,
     NotLoggedPage,
-    CreateProfilePage
+    CreateProfilePage,
+    PostDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { CreateProfilePage } from '../pages/create-profile/create-profile.page';
     SignInPage,
     SignUpPage,
     NotLoggedPage,
-    CreateProfilePage
+    CreateProfilePage,
+    PostDetailsPage
   ],
   providers: [
     StatusBar,
@@ -53,4 +56,6 @@ import { CreateProfilePage } from '../pages/create-profile/create-profile.page';
     HttpService
   ]
 })
-export class AppModule {}
+export class AppModule {
+
+}

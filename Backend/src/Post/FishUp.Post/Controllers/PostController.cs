@@ -39,6 +39,10 @@ namespace FishUp.Post.Controllers
         public async Task<IActionResult> UpdatePost([FromBody] UpdatePostCommand request, Guid id)
             => Ok(await _mediator.Send(request with { UserId = GetUserId(), PostId = id }));
 
+        [HttpPut("{id}/comment")]
+        public async Task<IActionResult> CommentPost([FromBody] CommentPostCommand request, Guid id)
+            => Ok(await _mediator.Send(request with { UserId = GetUserId(), PostId = id }));
+
         [HttpPut("{id}/like")]
         public async Task<IActionResult> LikePost(Guid id)
             => Ok(await _mediator.Send(new LikePostCommand(GetUserId(), id)));

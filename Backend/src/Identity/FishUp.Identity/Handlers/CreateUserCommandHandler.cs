@@ -4,7 +4,6 @@ using FishUp.Dispatchers;
 using FishUp.Identity.Infrastructure;
 using FishUp.Identity.Messages.Commands;
 using FishUp.Identity.Models.Responses;
-using MediatR;
 
 namespace FishUp.Identity.Handlers
 {

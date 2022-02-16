@@ -1,3 +1,4 @@
+import { PostDetails } from './../models/post-details';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BaseUrls } from '../models/base-urls';
@@ -33,6 +34,15 @@ getProfileDetails() {
 
 getUserPosts(userId: string) {
   return this.httpClient.get<UserPosts>(`${BaseUrls.Post}/created/${userId}`, this.addToken());
+}
+
+getPostDetails(postId: string) {
+  return this.httpClient.get<PostDetails>(`${BaseUrls.Post}/${postId}`, this.addToken());
+}
+
+commentPost(postId: string, message: any) {
+  console.log(message);
+  return this.httpClient.put<UserPosts>(`${BaseUrls.Post}/${postId}/comment`, message, this.addToken());
 }
 
 private addToken() {

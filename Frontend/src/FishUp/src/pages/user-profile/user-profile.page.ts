@@ -1,43 +1,45 @@
-import { ProfileDetails } from './../../models/profile-details';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { HttpService } from '../../services/http-service';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
+import { ProfileDetails } from '../../models/profile-details';
 import { UserPosts } from '../../models/user-posts';
-import { AccessToken } from '../../models/access-token';
+import { HttpService } from '../../services/http-service';
 
 @Component({
-  selector: 'profile-page',
-  templateUrl: './profile.page.html'
+  selector: 'user-profile',
+  templateUrl: './user-profile.page.html'
 })
-export class ProfilePage implements OnInit {
+export class UserProfilePage implements OnInit {
 
+  @Input() userId: string;
   displayProfilePage = true;
   displayCommentDetailsPage = false;
   currentCommentId = '';
   profileDetails: ProfileDetails = new ProfileDetails();
   userPosts: UserPosts = new UserPosts();
+
+  @Output() onGoBackEmit = new EventEmitter();
   constructor(private httpService: HttpService) {
    }
 
   ngOnInit() {
-    this.httpService.getProfileDetails(this.getUserId()).subscribe((profileDetails: ProfileDetails) => {
+    this.httpService.getProfileDetails(this.userId).subscribe((profileDetails: ProfileDetails) => {
       this.profileDetails = profileDetails;
-      this.httpService.getUserPosts(this.getUserId()).subscribe((userPosts: UserPosts) => {
+      this.httpService.getUserPosts(this.userId).subscribe((userPosts: UserPosts) => {
         this.userPosts = userPosts;
       })
     })
-  }
-
-  getUserId() {
-    var token = localStorage.getItem('token');
-    var decoded = this.parseJwt(token);
-    var x = decoded as AccessToken;
-    return x.sub;
   }
 
   goToComments(id: string) {
     this.currentCommentId = id;
     this.displayProfilePage = false;
     this.displayCommentDetailsPage = true;
+  }
+
+  goBackToSearcher() {
+    this.currentCommentId = null;
+    this.displayProfilePage = true;
+    this.displayCommentDetailsPage = false;
+    this.onGoBackEmit.emit();
   }
 
   goBackToProfilePage() {

@@ -1,9 +1,8 @@
-﻿using FishUp.Dispatchers;
-
-namespace FishUp.Profile.Models.Responses.Queries
+﻿namespace FishUp.Profile.Models.Responses.Queries
 {
-    public class ProfileForSearcher : IQueryResponse
+    public class ProfileForSearcher
     {
+        public Guid UserId { get; set; }
         public string FullName { get; set; }
     }
 }

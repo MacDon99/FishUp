@@ -1,0 +1,34 @@
+.search-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  & ion-input {
+    width: 70%;
+  }
+}
+
+
+.profiles {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & h5 {
+    margin: 0;
+    padding: 4px;
+  }
+}
+
+.profile:hover {
+  cursor: pointer;
+  background-color: rgb(169, 167, 170);
+  border-radius: 40px;
+}

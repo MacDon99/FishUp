@@ -26,10 +26,10 @@ namespace FishUp.Profile.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetProfileDetails([FromQuery] GetProfileDetailsQuery request)
-            => Ok(await _mediator.Send(request with { UserId = GetUserId() }));
+            => Ok(await _mediator.Send(request));
 
         [HttpGet("search")]
-        public async Task<IActionResult> GetProfileForSearcher([FromQuery] GetProfileForSearcherQuery request)
+        public async Task<IActionResult> GetProfilesForSearcher([FromQuery] GetProfilesForSearcherQuery request)
             => Ok(await _mediator.Send(request));
     }
 }

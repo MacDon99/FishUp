@@ -1,0 +1,23 @@
+<ng-container>
+  <ng-container *ngIf="displaySearcher">
+    <ion-content padding>
+      <br>
+      <br>
+      <form [formGroup]="form" class="search-form">
+        <ion-input style="width: 60%;" formControlName="searchPhrase" type="text" placeholder="Wyszukaj..."></ion-input>
+        <div class="fishup-btn comment" (click)="searchFriend()" style="width:fit-content">
+          Wyszukaj
+        </div>
+      </form>
+      <div class="profiles">
+        <div class="profile" *ngFor="let profile of searchedProfiles?.profiles" (click)="showUserProfile(profile?.userId)">
+          <h5 class="full-width">{{profile?.fullName}}</h5>
+        </div>
+      </div>
+    </ion-content>
+  </ng-container>
+  <ng-container *ngIf="displayUserProfile">
+    <user-profile [userId]="userId" (onGoBackEmit)="showSearcher()"></user-profile>
+  </ng-container>
+</ng-container>
+

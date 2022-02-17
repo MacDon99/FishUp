@@ -1,5 +1,6 @@
+import { ProfilesForSearcher } from './../models/profiles-for-searcher';
 import { PostDetails } from './../models/post-details';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BaseUrls } from '../models/base-urls';
 import { CreateProfile } from '../models/create-profile';
@@ -25,31 +26,38 @@ signUp(model: SignUp) {
 }
 
 createProfile(model: CreateProfile) {
-  return this.httpClient.post(`${BaseUrls.Profile}/`, model, this.addToken());
+  return this.httpClient.post(`${BaseUrls.Profile}/`, model, this.addHeaders());
 }
 
-getProfileDetails() {
-  return this.httpClient.get<ProfileDetails>(`${BaseUrls.Profile}/`, this.addToken());
+getProfileDetails(userId: string) {
+  return this.httpClient.get<ProfileDetails>(`${BaseUrls.Profile}?userId=${userId}`, this.addHeaders());
 }
 
 getUserPosts(userId: string) {
-  return this.httpClient.get<UserPosts>(`${BaseUrls.Post}/created/${userId}`, this.addToken());
+  return this.httpClient.get<UserPosts>(`${BaseUrls.Post}/created/${userId}`, this.addHeaders());
 }
 
 getPostDetails(postId: string) {
-  return this.httpClient.get<PostDetails>(`${BaseUrls.Post}/${postId}`, this.addToken());
+  return this.httpClient.get<PostDetails>(`${BaseUrls.Post}/${postId}`, this.addHeaders());
 }
 
 commentPost(postId: string, message: any) {
   console.log(message);
-  return this.httpClient.put<UserPosts>(`${BaseUrls.Post}/${postId}/comment`, message, this.addToken());
+  return this.httpClient.put<UserPosts>(`${BaseUrls.Post}/${postId}/comment`, message, this.addHeaders());
 }
 
-private addToken() {
+getProfilesForSearcher(searchPhrase: string) {
+  var params = new HttpParams();
+  params.append('searchPhrase', searchPhrase)
+  return this.httpClient.get<ProfilesForSearcher>(`${BaseUrls.Profile}/search?searchPhrase=${searchPhrase}`, this.addHeaders(params))
+}
+
+private addHeaders(params = null) {
   return {
     headers: {
       'Authorization': `Bearer ${this.getToken()}`
-    }
+    },
+    params: params
   }
 }
 

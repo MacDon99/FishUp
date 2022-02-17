@@ -1,3 +1,4 @@
+import { UserProfilePage } from './../pages/user-profile/user-profile.page';
 import { PostDetailsPage } from '../pages/comments/post-details.page';
 import { HttpService } from './../services/http-service';
 import { SignUpPage } from './../pages/sign-up/sign-up.page';
@@ -17,6 +18,7 @@ import { NotLoggedPage } from '../pages/not-logged/not-logged.page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from  '@angular/common/http';
 import { CreateProfilePage } from '../pages/create-profile/create-profile.page';
+import { SearcherPage } from '../pages/searcher/searcher.page';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { CreateProfilePage } from '../pages/create-profile/create-profile.page';
     SignUpPage,
     NotLoggedPage,
     CreateProfilePage,
-    PostDetailsPage
+    PostDetailsPage,
+    SearcherPage,
+    UserProfilePage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,9 @@ import { CreateProfilePage } from '../pages/create-profile/create-profile.page';
     SignUpPage,
     NotLoggedPage,
     CreateProfilePage,
-    PostDetailsPage
+    PostDetailsPage,
+    SearcherPage,
+    UserProfilePage
   ],
   providers: [
     StatusBar,

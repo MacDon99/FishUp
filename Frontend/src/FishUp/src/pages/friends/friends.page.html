@@ -1,0 +1,29 @@
+<ng-container>
+  <ng-container *ngIf="displayFriendsPage">
+    <div class="friends-page">
+      <ion-grid class="full-height">
+        <ion-row class="full-height">
+          <ion-col align-self-center class="full-height">
+            <div class="friends-panel">
+              <br>
+              <h3>Znajomi</h3>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-content>
+          <div class="profileData">
+            <ng-container *ngIf="userPosts?.posts">
+              <div class="data-item" *ngFor="let post of userPosts.posts">
+                <h5 class="full-width">{{post.content}}</h5>
+                <div class="fishup-btn comment" (click)="goToComments(post.id)">Komentarze</div>
+              </div>
+            </ng-container>
+          </div>
+        </ion-content>
+      </ion-grid>
+    </div>
+</ng-container>
+<ng-container *ngIf="displayFriendProfilePage">
+  <user-profile [userId]="selectedUserId" ></user-profile>
+</ng-container>
+</ng-container>

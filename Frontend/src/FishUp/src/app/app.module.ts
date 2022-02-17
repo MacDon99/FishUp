@@ -1,3 +1,4 @@
+import { FriendsPage } from './../pages/friends/friends.page';
 import { UserProfilePage } from './../pages/user-profile/user-profile.page';
 import { PostDetailsPage } from '../pages/comments/post-details.page';
 import { HttpService } from './../services/http-service';
@@ -32,7 +33,8 @@ import { SearcherPage } from '../pages/searcher/searcher.page';
     CreateProfilePage,
     PostDetailsPage,
     SearcherPage,
-    UserProfilePage
+    UserProfilePage,
+    FriendsPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ import { SearcherPage } from '../pages/searcher/searcher.page';
     CreateProfilePage,
     PostDetailsPage,
     SearcherPage,
-    UserProfilePage
+    UserProfilePage,
+    FriendsPage
   ],
   providers: [
     StatusBar,

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FriendsPage } from '../friends/friends.page';
 
 import { HomePage } from '../home/home';
 import { ProfilePage } from '../profile/profile.page';
@@ -11,6 +12,7 @@ export class TabsPage {
 
   homeRoot = HomePage;
   searcherRoot = SearcherPage;
+  friendsRoot = FriendsPage;
   profileRoot = ProfilePage;
 
   constructor() {

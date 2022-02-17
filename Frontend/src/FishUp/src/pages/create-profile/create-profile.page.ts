@@ -39,7 +39,6 @@ export class CreateProfilePage implements OnInit {
       loader.dismiss();
       this.onCreatedProfileEmit.emit();
     }, (error) => {
-      console.log(error);
       loader.dismiss();
       const alert = this.alertController.create({
         message: 'Wprowadzono niepoprawne dane.',

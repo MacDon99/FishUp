@@ -57,6 +57,12 @@ getAvailableTrips() {
   return this.httpClient.get<AvailableTrips>(`${BaseUrls.Trip}/available`, this.addHeaders())
 }
 
+addFriend(id: string) {
+  return this.httpClient.post(`${BaseUrls.Profile}/friend/add`, {
+    friendId: id
+  }, this.addHeaders())
+}
+
 private addHeaders(params = null) {
   return {
     headers: {

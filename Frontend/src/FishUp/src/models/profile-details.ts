@@ -5,4 +5,5 @@ export class ProfileDetails {
   birthYear: number;
   profession: string;
   willToTravelFar: boolean;
+  friendsIds: string[];
 }

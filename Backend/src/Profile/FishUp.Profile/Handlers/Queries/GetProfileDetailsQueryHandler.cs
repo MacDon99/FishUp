@@ -32,7 +32,10 @@ namespace FishUp.Profile.Handlers.Queries
                     Profession = group.Profile.Profession,
                     Voivodeship = group.Profile.Voivodeship,
                     WillToTravelFar = group.Profile.WillToTravelFar,
-                    BirthYear = group.Profile.BirthDate.Year
+                    BirthYear = group.Profile.BirthDate.Year,
+                    FriendsIds = _appDbContext.Friends
+                        .Where(friendship => friendship.UserId == group.User.IdentityUserId)
+                        .Select(friendship => friendship.FriendId).ToList()
                 }).FirstOrDefaultAsync();
 
             if (userDetails is null)

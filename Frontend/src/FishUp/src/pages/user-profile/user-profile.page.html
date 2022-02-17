@@ -10,6 +10,9 @@
               <div class="fishup-btn danger go-back" (click)="goBackToSearcher()">
                 Powrót
               </div>
+              <div *ngIf="currentUserId != userId && canAddFriend" class="fishup-btn primary add-friend" (click)="addFriend()">
+                Dodaj
+              </div>
               <h3>Profil</h3>
               <div class="profileData">
                 <div class="data-item">

@@ -10,5 +10,6 @@ namespace FishUp.Profile.Models.Responses.Queries
         public int BirthYear { get; set; }
         public string Profession { get; set; }
         public bool WillToTravelFar { get; set; }
+        public IEnumerable<Guid> FriendsIds { get; set; }
     }
 }

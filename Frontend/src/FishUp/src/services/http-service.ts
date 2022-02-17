@@ -9,6 +9,7 @@ import { ReceivedToken } from '../models/received-token';
 import { SignIn } from '../models/sign-in';
 import { SignUp } from '../models/sign-up';
 import { UserPosts } from '../models/user-posts';
+import { AvailableTrips } from '../models/available-trips';
 
 @Injectable()
 export class HttpService {
@@ -50,6 +51,10 @@ getProfilesForSearcher(searchPhrase: string) {
   var params = new HttpParams();
   params.append('searchPhrase', searchPhrase)
   return this.httpClient.get<ProfilesForSearcher>(`${BaseUrls.Profile}/search?searchPhrase=${searchPhrase}`, this.addHeaders(params))
+}
+
+getAvailableTrips() {
+  return this.httpClient.get<AvailableTrips>(`${BaseUrls.Trip}/available`, this.addHeaders())
 }
 
 private addHeaders(params = null) {

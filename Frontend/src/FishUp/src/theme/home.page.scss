@@ -1,0 +1,25 @@
+.buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.trip {
+  display: flex;
+  justify-content: center;
+
+  & p {
+    padding: 4px;
+    margin: 4px;
+  }
+}
+
+.trip:hover {
+  cursor: pointer;
+  background-color: rgb(169, 167, 170);
+  border-radius: 40px;
+}
+
+.author {
+  width: 50%;
+}

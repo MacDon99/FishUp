@@ -30,21 +30,7 @@ namespace FishUp.Trip.Handlers.Queries
                     .Select(group => new AvailableTrip()
                     { 
                         Author = group.User.FirstName + (group.User.SecondName != null ? " " + group.User.SecondName : string.Empty) + " " + group.User.LastName,
-                        Closed = group.Trip.Closed,
-                        Destination = group.Trip.Destination,
-                        EndDate = group.Trip.EndDate,
-                        StartDate = group.Trip.StartDate,
-                        Participants = _appDbContext.Participants
-                            .Where(participant => participant.TripId == group.Trip.Id)
-                            .Join(_appDbContext.Users, participant => participant.UserId, user => user.IdentityUserId, (participant, user) => new
-                            {
-                                Participant = participant,
-                                User = user
-                            }).Select(group => new JoinedParticipant()
-                            { 
-                                Name = group.User.FirstName + (group.User.SecondName != null ? " " + group.User.SecondName : string.Empty) + " " + group.User.LastName,
-                                ParticipantUserId = group.User.IdentityUserId
-                            }).ToList()
+                        Destination = group.Trip.Destination
                     }).ToListAsync()
             };
     }

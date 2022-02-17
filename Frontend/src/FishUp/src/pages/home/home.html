@@ -3,12 +3,26 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
+  <div class="buttons">
+    <div class="fishup-btn primary add" (click)="addPost()">
+      Nowy post
+    </div>
+    <div class="fishup-btn primary add" (click)="addTrip()">
+      Nowy trip
+    </div>
+  </div>
   <h4>Najnowsze posty</h4>
   <p>
     Tu zaraz będą najnowsze posty
   </p>
   <h4>Zaplanowane podróże</h4>
-  <p>
-    Tu zaraz będą dostępne podróże
+  <p *ngIf="availableTrips?.trips.length == 0">
+    Tu niedługo pojawią się dostępne podróże
   </p>
+  <ng-container *ngIf="availableTrips?.trips?.length != 0">
+    <div class="trip" *ngFor="let trip of availableTrips?.trips">
+      <p class="author">{{trip?.author}}</p>
+      <p>{{trip?.destination}}</p>
+    </div>
+  </ng-container>
 </ion-content>

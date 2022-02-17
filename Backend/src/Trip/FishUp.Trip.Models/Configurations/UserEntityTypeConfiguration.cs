@@ -6,7 +6,7 @@ namespace FishUp.Trip.Models.Configurations
 {
     public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User>
     {
-        public string Table => "User";
+        public string Table => "Users";
         public string Schema => "identity";
 
         public void Configure(EntityTypeBuilder<User> builder)

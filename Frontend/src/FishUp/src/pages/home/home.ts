@@ -33,6 +33,13 @@ export class HomePage implements OnInit {
 
   }
 
+  moveToAddPostPage() {
+    this.displayHomePage = false;
+    this.displayAddPostPage = true;
+    this.displayTripDetailsPage = false;
+    this.displayPostDetailsPage = false;
+  }
+
   moveToTripDetailsPage(tripId: string) {
     this.currentTripId = tripId;
 

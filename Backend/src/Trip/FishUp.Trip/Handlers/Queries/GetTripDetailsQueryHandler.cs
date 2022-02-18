@@ -26,13 +26,16 @@ namespace FishUp.Trip.Handlers.Queries
                      User = user
                  })
                 .Select(group => new TripDetails()
-                { 
+                {
+                    Id = group.Trip.Id,
                     AuthorId = group.Trip.AuthorId,
+                    AuthorName = group.User.FirstName + (group.User.SecondName != null ? " " + group.User.SecondName : string.Empty) + " " + group.User.LastName,
                     Closed = group.Trip.Closed,
                     Destination = group.Trip.Destination,
                     StartDate = group.Trip.StartDate,
                     EndDate = group.Trip.EndDate,
                     Participants = _appDbContext.Participants
+                            .Where(participant => request.UserId == group.Trip.AuthorId ? true : false)
                             .Where(participant => participant.TripId == group.Trip.Id)
                             .Join(_appDbContext.Users, participant => participant.UserId, user => user.IdentityUserId, (participant, user) => new
                             {

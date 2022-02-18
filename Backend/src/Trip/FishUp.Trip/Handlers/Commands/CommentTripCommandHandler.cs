@@ -17,15 +17,23 @@ namespace FishUp.Trip.Handlers.Commands
 
         public async Task<Unit> Handle(CommentTripCommand request, CancellationToken cancellationToken)
         {
-            var trip = await _appDbContext.Trips.FirstOrDefaultAsync(trip => trip.AuthorId == request.UserId && trip.Id == request.TripId);
+            var trip = await _appDbContext.Trips.FirstOrDefaultAsync(trip => trip.Id == request.TripId);
 
             if (trip is null)
             {
-                throw new EntityNotFoundException(ExceptionCode.NotExists, "Cannot find trip for current user with given user id");
+                throw new EntityNotFoundException(ExceptionCode.NotExists, "Cannot find trip with given user id");
             }
 
             trip.Comment(request.UserId, request.Message);
+            try
+            {
+
             await _appDbContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                var x = ex.Message;
+            }
 
             return Unit.Value;
         }

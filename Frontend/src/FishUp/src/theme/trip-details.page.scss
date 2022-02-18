@@ -1,0 +1,43 @@
+.trip-details-page {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  overflow: hidden;
+}
+
+html, body {margin: 0; height: 100%; overflow: hidden}
+
+.trip-details-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80%;
+  width: 100%;
+}
+
+.messageForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  & ion-input {
+    width: 70%;
+  }
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.comment {
+  & h5 {
+    margin: 0px;
+    padding: 0px;
+  }
+  margin: 2px;
+}

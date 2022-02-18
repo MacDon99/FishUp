@@ -21,6 +21,7 @@ import { HttpClientModule } from  '@angular/common/http';
 import { CreateProfilePage } from '../pages/create-profile/create-profile.page';
 import { SearcherPage } from '../pages/searcher/searcher.page';
 import { AddPostPage } from '../pages/add-post/add-post.page';
+import { TripDetailsPage } from '../pages/trip-details/trip-details.page';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AddPostPage } from '../pages/add-post/add-post.page';
     SearcherPage,
     UserProfilePage,
     FriendsPage,
-    AddPostPage
+    AddPostPage,
+    TripDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import { AddPostPage } from '../pages/add-post/add-post.page';
     SearcherPage,
     UserProfilePage,
     FriendsPage,
-    AddPostPage
+    AddPostPage,
+    TripDetailsPage
   ],
   providers: [
     StatusBar,

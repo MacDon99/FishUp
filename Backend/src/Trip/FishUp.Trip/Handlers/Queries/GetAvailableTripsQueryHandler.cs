@@ -29,6 +29,7 @@ namespace FishUp.Trip.Handlers.Queries
                     .Where(group => !group.Trip.Closed && group.Trip.StartDate > _dateTimeProvider.GetCurrentDate())
                     .Select(group => new AvailableTrip()
                     { 
+                        Id = group.Trip.Id,
                         Author = group.User.FirstName + (group.User.SecondName != null ? " " + group.User.SecondName : string.Empty) + " " + group.User.LastName,
                         Destination = group.Trip.Destination
                     }).ToListAsync()

@@ -1,16 +1,20 @@
-<div class="comments-page">
+<div class="trip-details-page">
   <ion-grid class="full-height">
     <ion-row class="full-height">
       <ion-col align-self-center class="full-height">
-        <div class="comments-panel">
+        <div class="trip-details-panel">
           <br>
           <br>
           <div class="fishup-btn danger go-back" (click)="goBack()">
             Powrót
           </div>
-          <h3>{{postDetails?.content || 'Ładowanie'}}</h3>
+          <h3>{{tripDetails?.destination || 'Ładowanie'}}</h3>
+          <h5>Autor: {{tripDetails?.authorName || '-'}}</h5>
+          <h5>Kiedy: {{tripDetails?.startDate | date: 'dd/MM/yyyy' || '-'}}</h5>
+          <h5>Do kiedy: {{tripDetails?.endDate | date: 'dd/MM/yyyy' || '-'}}</h5>
           <div class="comments">
-            <div class="comment" *ngFor="let comment of postDetails?.comments">
+            <h3>Komentarze</h3>
+            <div class="comment" *ngFor="let comment of tripDetails?.comments">
               <h5 class="full-width">{{comment?.message}}</h5>
               <span class="full-width" style="font-size: small;">{{comment?.authorName}}</span>
             </div>

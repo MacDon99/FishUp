@@ -29,7 +29,7 @@ namespace FishUp.Trip.Controllers
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTripDetails(Guid id)
-            => Ok(await _mediator.Send(new GetTripDetailsQuery(id)));
+            => Ok(await _mediator.Send(new GetTripDetailsQuery(id, GetUserId())));
 
         [HttpPut("{id}/update")]
         public async Task<IActionResult> UpdateTrip([FromBody] UpdateTripCommand request, Guid id)

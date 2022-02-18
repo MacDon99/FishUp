@@ -39,7 +39,13 @@ namespace FishUp.Trip.Models.Entities
 
         public void Comment(Guid userId, string message)
         {
+            if (Comments is null)
+            {
+                Comments = new List<Comment>();
+            }
             Comments.Add(new Comment(userId, message));
+
+            Valid();
         }
 
         public void Participate(Guid userId)

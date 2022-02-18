@@ -12,6 +12,7 @@ import { UserPosts } from '../models/user-posts';
 import { AvailableTrips } from '../models/available-trips';
 import { Friendships } from '../models/friendships';
 import { RecentPosts } from '../models/recent-posts';
+import { TripDetails } from '../models/trip-details';
 
 @Injectable()
 export class HttpService {
@@ -45,7 +46,6 @@ getPostDetails(postId: string) {
 }
 
 commentPost(postId: string, message: any) {
-  console.log(message);
   return this.httpClient.put<UserPosts>(`${BaseUrls.Post}/${postId}/comment`, message, this.addHeaders());
 }
 
@@ -81,6 +81,14 @@ getRecentPosts() {
 
 addPost(message: string) {
   return this.httpClient.post(`${BaseUrls.Post}`, message, this.addHeaders())
+}
+
+getTripDetails(tripId: string) {
+  return this.httpClient.get<TripDetails>(`${BaseUrls.Trip}/${tripId}`, this.addHeaders());
+}
+
+commentTrip(tripId: string, message: any) {
+  return this.httpClient.put<UserPosts>(`${BaseUrls.Trip}/${tripId}/comment`, message, this.addHeaders());
 }
 
 private addHeaders(params = null, body = null) {

@@ -15,8 +15,10 @@ export class HomePage implements OnInit {
   recentPosts : RecentPosts = new RecentPosts();;
   displayHomePage = true;
   displayAddPostPage = false;
-  displayCommentDetailsPage = false;
+  displayPostDetailsPage = false;
+  displayTripDetailsPage = false;
   currentCommentId = '';
+  currentTripId = '';
 
   constructor(public navCtrl: NavController, private httpService: HttpService, private loadingController: LoadingController) {
 
@@ -31,35 +33,42 @@ export class HomePage implements OnInit {
 
   }
 
+  moveToTripDetailsPage(tripId: string) {
+    this.currentTripId = tripId;
+
+    this.displayHomePage = false;
+    this.displayAddPostPage = false;
+    this.displayTripDetailsPage = true;
+    this.displayPostDetailsPage = false;
+  }
+
   moveToPostDetailsPage(postId: string) {
     this.currentCommentId = postId;
 
     this.displayHomePage = false;
     this.displayAddPostPage = false;
-    this.displayCommentDetailsPage = true;
+    this.displayTripDetailsPage = false;
+    this.displayPostDetailsPage = true;
   }
 
-  moveToAddPostPage() {
-    this.displayHomePage = false;
-    this.displayAddPostPage = true;
-    this.displayCommentDetailsPage = false;
-  }
-
-  onGoBackFromPostEmit() {
+  onGoBackEmit() {
     this.displayHomePage = true;
     this.displayAddPostPage = false;
-    this.displayCommentDetailsPage = false;
+    this.displayTripDetailsPage = false;
+    this.displayPostDetailsPage = false;
   }
 
   onAddedPostEmit() {
     this.displayHomePage = true;
     this.displayAddPostPage = false;
-    this.displayCommentDetailsPage = false;
+    this.displayTripDetailsPage = false;
+    this.displayPostDetailsPage = false;
     this.getPosts();
   }
 
   ionViewWillEnter() {
     this.getPosts();
+    this.getTrips();
   }
 
   getPosts() {

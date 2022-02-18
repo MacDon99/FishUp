@@ -1,12 +1,10 @@
 <ng-container>
   <ng-container *ngIf="displayHomePage">
-    <ion-header>
-      <ion-navbar>
-      </ion-navbar>
-    </ion-header>
-    <ion-content padding>
+    <ion-content>
+      <br>
+      <br>
       <div class="buttons">
-        <div class="fishup-btn primary add" (click)="moveToAddPostPage()">
+        <div class="fishup-btn primary add" (click)="moveToAddPostPage()" style="margin-left:5px;">
           Nowy post
         </div>
         <div class="fishup-btn primary add" (click)="moveToAddTripPage()">
@@ -28,7 +26,7 @@
         Tu niedługo pojawią się dostępne podróże
       </p>
       <ng-container *ngIf="availableTrips?.trips?.length != 0">
-        <div class="trip" *ngFor="let trip of availableTrips?.trips">
+        <div class="trip" *ngFor="let trip of availableTrips?.trips"  (click)="moveToTripDetailsPage(trip?.id)">
           <p class="author">{{trip?.author}}</p>
           <p>{{trip?.destination}}</p>
         </div>
@@ -36,9 +34,12 @@
     </ion-content>
   </ng-container>
   <ng-container *ngIf="displayAddPostPage">
-    <add-post (onAddedPostEmit)="onAddedPostEmit()"></add-post>
+    <add-post (onGoBackEmit)="onGoBackEmit()"></add-post>
   </ng-container>
-  <ng-container *ngIf="displayCommentDetailsPage">
-    <post-details-page (onGoBackEmit)="onGoBackFromPostEmit()" [commentId]="currentCommentId" ></post-details-page>
-    </ng-container>
+  <ng-container *ngIf="displayPostDetailsPage">
+    <post-details-page (onGoBackEmit)="onGoBackEmit()" [commentId]="currentCommentId" ></post-details-page>
+  </ng-container>
+  <ng-container *ngIf="displayTripDetailsPage">
+    <trip-details [tripId]="currentTripId" (onGoBackEmit)="onGoBackEmit()"></trip-details>
+  </ng-container>
 </ng-container>

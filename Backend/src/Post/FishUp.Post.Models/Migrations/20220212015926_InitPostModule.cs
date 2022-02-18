@@ -48,19 +48,7 @@ namespace FishUp.Post.Models.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Comments", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Comments_Posts_PostId",
-                        column: x => x.PostId,
-                        principalSchema: "post",
-                        principalTable: "Posts",
-                        principalColumn: "Id");
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Comments_PostId",
-                schema: "mutual",
-                table: "Comments",
-                column: "PostId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

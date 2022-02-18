@@ -7,7 +7,7 @@ import { ReceivedToken } from '../../models/received-token';
 })
 export class NotLoggedPage implements OnInit {
 
-  displayNotLoggedInPanel = true;
+  displayNotLoggedInPanel = false;
   displayLoginOptions = true;
   displayRegisterPanel = false;
   displaySignInPanel = false;

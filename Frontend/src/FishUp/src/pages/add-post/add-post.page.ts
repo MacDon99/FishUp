@@ -10,7 +10,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class AddPostPage implements OnInit {
 
   form: FormGroup = this.getFormGroup();
-  @Output() onAddedPostEmit = new EventEmitter();
+  @Output() onGoBackEmit = new EventEmitter();
   constructor(private httpService: HttpService, private loadingController: LoadingController, private alertController: AlertController) { }
 
   ngOnInit() {
@@ -33,7 +33,7 @@ export class AddPostPage implements OnInit {
     this.httpService.addPost(this.form.value)
       .subscribe(() => {
         loader.dismiss();
-        this.onAddedPostEmit.emit();
+        this.onGoBackEmit.emit();
       }, () => {
         loader.dismiss();
         const alert = this.alertController.create({
@@ -42,6 +42,10 @@ export class AddPostPage implements OnInit {
         });
         alert.present();
       })
+  }
+
+  goBack() {
+    this.onGoBackEmit.emit();
   }
 
 }

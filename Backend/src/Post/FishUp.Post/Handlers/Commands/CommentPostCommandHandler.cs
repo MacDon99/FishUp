@@ -21,7 +21,7 @@ namespace FishUp.Post.Handlers.Commands
             var post = await _appDbContext.Posts.FirstOrDefaultAsync(post => post.Id == request.PostId);
             if (post is null)
             {
-                throw new EntityNotFoundException(ExceptionCode.NotExists, "Cannot find post with given Id for current user");
+                throw new EntityNotFoundException(ExceptionCode.NotExists, "Cannot find post with given Id");
             }
 
             var comment = new Comment(request.UserId, request.Message);

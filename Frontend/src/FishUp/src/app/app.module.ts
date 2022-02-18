@@ -1,3 +1,4 @@
+import { AddTripPage } from './../pages/add-trip/add-trip.page';
 import { FriendsPage } from './../pages/friends/friends.page';
 import { UserProfilePage } from './../pages/user-profile/user-profile.page';
 import { PostDetailsPage } from '../pages/comments/post-details.page';
@@ -38,7 +39,8 @@ import { TripDetailsPage } from '../pages/trip-details/trip-details.page';
     UserProfilePage,
     FriendsPage,
     AddPostPage,
-    TripDetailsPage
+    TripDetailsPage,
+    AddTripPage
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,8 @@ import { TripDetailsPage } from '../pages/trip-details/trip-details.page';
     UserProfilePage,
     FriendsPage,
     AddPostPage,
-    TripDetailsPage
+    TripDetailsPage,
+    AddTripPage
   ],
   providers: [
     StatusBar,

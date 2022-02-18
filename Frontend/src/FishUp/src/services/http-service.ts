@@ -91,6 +91,10 @@ commentTrip(tripId: string, message: any) {
   return this.httpClient.put<UserPosts>(`${BaseUrls.Trip}/${tripId}/comment`, message, this.addHeaders());
 }
 
+addTrip(value: any) {
+  return this.httpClient.post(`${BaseUrls.Trip}`, value, this.addHeaders())
+}
+
 private addHeaders(params = null, body = null) {
   return {
     headers: {

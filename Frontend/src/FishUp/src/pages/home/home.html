@@ -36,6 +36,9 @@
   <ng-container *ngIf="displayAddPostPage">
     <add-post (onGoBackEmit)="onGoBackEmit()"></add-post>
   </ng-container>
+  <ng-container *ngIf="displayAddTripPage">
+    <add-trip (onGoBackEmit)="onGoBackEmit()"></add-trip>
+  </ng-container>
   <ng-container *ngIf="displayPostDetailsPage">
     <post-details-page (onGoBackEmit)="onGoBackEmit()" [commentId]="currentCommentId" ></post-details-page>
   </ng-container>

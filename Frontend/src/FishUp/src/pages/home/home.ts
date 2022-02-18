@@ -17,6 +17,7 @@ export class HomePage implements OnInit {
   displayAddPostPage = false;
   displayPostDetailsPage = false;
   displayTripDetailsPage = false;
+  displayAddTripPage = false;
   currentCommentId = '';
   currentTripId = '';
 
@@ -30,7 +31,11 @@ export class HomePage implements OnInit {
   }
 
   moveToAddTripPage() {
-
+    this.displayHomePage = false;
+    this.displayAddPostPage = false;
+    this.displayTripDetailsPage = false;
+    this.displayPostDetailsPage = false;
+    this.displayAddTripPage = true;
   }
 
   moveToAddPostPage() {
@@ -38,6 +43,7 @@ export class HomePage implements OnInit {
     this.displayAddPostPage = true;
     this.displayTripDetailsPage = false;
     this.displayPostDetailsPage = false;
+    this.displayAddTripPage = false;
   }
 
   moveToTripDetailsPage(tripId: string) {
@@ -47,6 +53,7 @@ export class HomePage implements OnInit {
     this.displayAddPostPage = false;
     this.displayTripDetailsPage = true;
     this.displayPostDetailsPage = false;
+    this.displayAddTripPage = false;
   }
 
   moveToPostDetailsPage(postId: string) {
@@ -56,6 +63,7 @@ export class HomePage implements OnInit {
     this.displayAddPostPage = false;
     this.displayTripDetailsPage = false;
     this.displayPostDetailsPage = true;
+    this.displayAddTripPage = false;
   }
 
   onGoBackEmit() {
@@ -63,14 +71,9 @@ export class HomePage implements OnInit {
     this.displayAddPostPage = false;
     this.displayTripDetailsPage = false;
     this.displayPostDetailsPage = false;
-  }
-
-  onAddedPostEmit() {
-    this.displayHomePage = true;
-    this.displayAddPostPage = false;
-    this.displayTripDetailsPage = false;
-    this.displayPostDetailsPage = false;
+    this.displayAddTripPage = false;
     this.getPosts();
+    this.getTrips();
   }
 
   ionViewWillEnter() {

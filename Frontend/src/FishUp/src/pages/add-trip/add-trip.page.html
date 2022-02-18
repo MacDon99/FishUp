@@ -1,0 +1,28 @@
+<ng-container>
+  <div class="add-trip-page">
+    <ion-grid class="full-height">
+      <ion-row class="full-height">
+        <ion-col align-self-center class="full-height">
+          <div class="add-trip-panel">
+            <br>
+            <div class="fishup-btn danger go-back" (click)="goBack()">
+              Powrót
+            </div>
+            <br>
+            <h3>Nowa wyprawa</h3>
+            <form>
+              <form [formGroup]="form">
+                <ion-input type="textarea" formControlName="destination" placeholder="Treść" class="base-input"></ion-input>
+                <ion-input type="textarea" formControlName="startDate" placeholder="Data wyprawy" class="base-input"></ion-input>
+                <ion-input type="textarea" formControlName="endDate" placeholder="Data końca" class="base-input"></ion-input>
+              </form>
+              <div class="fishup-btn primary" (click)="addTrip()">
+                Dodaj wyprawę
+              </div>
+            </form>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ng-container>

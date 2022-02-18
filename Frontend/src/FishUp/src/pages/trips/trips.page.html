@@ -1,0 +1,39 @@
+<ng-container>
+  <ng-container *ngIf="displayTripsPage">
+    <ion-content>
+      <br>
+      <br>
+      <div class="buttons">
+        <div class="fishup-btn primary add" (click)="moveToAddTripPage()" style="margin-left:5px;">
+          Nowy trip
+        </div>
+      </div>
+      <h4>Moje</h4>
+      <p *ngIf="createdTrips?.trips.length == 0">
+        Tu pojawią się twoje utworzone podróże
+      </p>
+      <ng-container *ngIf="createdTrips?.trips?.length != 0">
+        <div class="trip" *ngFor="let trip of createdTrips?.trips"  (click)="moveToTripDetailsPage(trip?.id)">
+          <p>{{trip?.destination}}</p>
+          <p>{{trip?.participantsCount}}</p>
+        </div>
+      </ng-container>
+      <h4>Dołączone</h4>
+      <p *ngIf="joinedTrips?.trips.length == 0">
+        Tu niedługo pojawią się podróże do których dołączyłeś
+      </p>
+      <ng-container *ngIf="joinedTrips?.trips?.length != 0">
+        <div class="trip" *ngFor="let trip of joinedTrips?.trips"  (click)="moveToTripDetailsPage(trip?.id)">
+          <p class="author">{{trip?.author}}</p>
+          <p>{{trip?.destination}}</p>
+        </div>
+      </ng-container>
+    </ion-content>
+  </ng-container>
+  <ng-container *ngIf="displayAddTripPage">
+    <add-trip (onGoBackEmit)="onGoBackEmit()"></add-trip>
+  </ng-container>
+  <ng-container *ngIf="displayTripDetailsPage">
+    <trip-details [tripId]="currentTripId" (onGoBackEmit)="onGoBackEmit()"></trip-details>
+  </ng-container>
+</ng-container>

@@ -23,6 +23,7 @@ import { CreateProfilePage } from '../pages/create-profile/create-profile.page';
 import { SearcherPage } from '../pages/searcher/searcher.page';
 import { AddPostPage } from '../pages/add-post/add-post.page';
 import { TripDetailsPage } from '../pages/trip-details/trip-details.page';
+import { TripsPage } from '../pages/trips/trips.page';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { TripDetailsPage } from '../pages/trip-details/trip-details.page';
     FriendsPage,
     AddPostPage,
     TripDetailsPage,
-    AddTripPage
+    AddTripPage,
+    TripsPage
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,8 @@ import { TripDetailsPage } from '../pages/trip-details/trip-details.page';
     FriendsPage,
     AddPostPage,
     TripDetailsPage,
-    AddTripPage
+    AddTripPage,
+    TripsPage
   ],
   providers: [
     StatusBar,

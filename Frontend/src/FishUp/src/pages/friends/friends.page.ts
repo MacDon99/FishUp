@@ -7,7 +7,7 @@ import { Friendships } from '../../models/friendships';
   selector: 'friends-page',
   templateUrl: './friends.page.html'
 })
-export class FriendsPage implements OnInit {
+export class FriendsPage {
 
   displayFriendsPage = true;
   displayFriendProfilePage = false;
@@ -18,10 +18,6 @@ export class FriendsPage implements OnInit {
 
 
   ionViewWillEnter() {
-    this.getFriends();
-  }
-
-  ngOnInit() {
     this.getFriends();
   }
 

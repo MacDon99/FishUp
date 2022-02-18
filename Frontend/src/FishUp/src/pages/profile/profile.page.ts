@@ -8,7 +8,7 @@ import { AccessToken } from '../../models/access-token';
   selector: 'profile-page',
   templateUrl: './profile.page.html'
 })
-export class ProfilePage implements OnInit {
+export class ProfilePage {
 
   displayProfilePage = true;
   displayCommentDetailsPage = false;
@@ -18,15 +18,11 @@ export class ProfilePage implements OnInit {
   constructor(private httpService: HttpService) {
    }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.httpService.getProfileDetails(this.getUserId()).subscribe((profileDetails: ProfileDetails) => {
       this.profileDetails = profileDetails;
       this.getPosts();
     })
-  }
-
-  ionViewWillEnter() {
-    this.getPosts();
   }
 
   getPosts() {

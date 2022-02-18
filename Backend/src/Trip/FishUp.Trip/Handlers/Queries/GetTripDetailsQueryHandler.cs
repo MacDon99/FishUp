@@ -19,6 +19,7 @@ namespace FishUp.Trip.Handlers.Queries
         public async Task<TripDetails> Handle(GetTripDetailsQuery request, CancellationToken cancellationToken)
         {
             var trip = await _appDbContext.Trips
+                .Include(trip => trip.Participants)
                 .Where(trip => trip.Id == request.TripId)
                 .Join(_appDbContext.Users, trip => trip.AuthorId, user => user.IdentityUserId, (trip, user) => new
                  {
@@ -35,7 +36,6 @@ namespace FishUp.Trip.Handlers.Queries
                     StartDate = group.Trip.StartDate,
                     EndDate = group.Trip.EndDate,
                     Participants = _appDbContext.Participants
-                            .Where(participant => request.UserId == group.Trip.AuthorId ? true : false)
                             .Where(participant => participant.TripId == group.Trip.Id)
                             .Join(_appDbContext.Users, participant => participant.UserId, user => user.IdentityUserId, (participant, user) => new
                             {

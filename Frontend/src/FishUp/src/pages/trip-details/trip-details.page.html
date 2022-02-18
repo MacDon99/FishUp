@@ -8,6 +8,12 @@
           <div class="fishup-btn danger go-back" (click)="goBack()">
             Powrót
           </div>
+          <div *ngIf="canJoinTrip" class="fishup-btn primary join-trip" (click)="joinTrip()">
+            Dołącz
+          </div>
+          <div *ngIf="canLeaveTrip" class="fishup-btn primary leave-trip" (click)="leaveTrip()">
+            Odejdź
+          </div>
           <h3>{{tripDetails?.destination || 'Ładowanie'}}</h3>
           <h5>Autor: {{tripDetails?.authorName || '-'}}</h5>
           <h5>Kiedy: {{tripDetails?.startDate | date: 'dd/MM/yyyy' || '-'}}</h5>

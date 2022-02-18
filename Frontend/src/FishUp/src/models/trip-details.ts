@@ -1,5 +1,6 @@
 import { AddedComment } from './added-comment';
 import { DateTime } from 'ionic-angular';
+import { JoinedParticipant } from './joined-participant';
 
 export class TripDetails {
   id: string;
@@ -10,4 +11,5 @@ export class TripDetails {
   endDate: DateTime;
   closed: boolean;
   comments: AddedComment[];
+  participants: JoinedParticipant[];
 }

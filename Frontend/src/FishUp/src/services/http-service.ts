@@ -9,7 +9,7 @@ import { ReceivedToken } from '../models/received-token';
 import { SignIn } from '../models/sign-in';
 import { SignUp } from '../models/sign-up';
 import { UserPosts } from '../models/user-posts';
-import { AvailableTrips } from '../models/available-trips';
+import { Trips } from '../models/trips';
 import { Friendships } from '../models/friendships';
 import { RecentPosts } from '../models/recent-posts';
 import { TripDetails } from '../models/trip-details';
@@ -56,7 +56,15 @@ getProfilesForSearcher(searchPhrase: string) {
 }
 
 getAvailableTrips() {
-  return this.httpClient.get<AvailableTrips>(`${BaseUrls.Trip}/available`, this.addHeaders())
+  return this.httpClient.get<Trips>(`${BaseUrls.Trip}/available`, this.addHeaders())
+}
+
+getJoinedTrips() {
+  return this.httpClient.get<Trips>(`${BaseUrls.Trip}/joined`, this.addHeaders())
+}
+
+getCreatedTrips() {
+  return this.httpClient.get<Trips>(`${BaseUrls.Trip}/created`, this.addHeaders())
 }
 
 addFriend(id: string) {
@@ -93,6 +101,14 @@ commentTrip(tripId: string, message: any) {
 
 addTrip(value: any) {
   return this.httpClient.post(`${BaseUrls.Trip}`, value, this.addHeaders())
+}
+
+participateTrip(tripId: string) {
+  return this.httpClient.put(`${BaseUrls.Trip}/${tripId}/participate`, {}, this.addHeaders())
+}
+
+leaveTrip(tripId: string) {
+  return this.httpClient.put(`${BaseUrls.Trip}/${tripId}/leave`, {}, this.addHeaders())
 }
 
 private addHeaders(params = null, body = null) {

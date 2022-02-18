@@ -1,4 +1,4 @@
-import { AvailableTrips } from './../../models/available-trips';
+import { Trips } from '../../models/trips';
 import { HttpService } from './../../services/http-service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -9,9 +9,9 @@ import { RecentPosts } from '../../models/recent-posts';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
-  availableTrips: AvailableTrips = new AvailableTrips();
+  availableTrips: Trips = new Trips();
   recentPosts : RecentPosts = new RecentPosts();;
   displayHomePage = true;
   displayAddPostPage = false;
@@ -23,11 +23,6 @@ export class HomePage implements OnInit {
 
   constructor(public navCtrl: NavController, private httpService: HttpService, private loadingController: LoadingController) {
 
-  }
-
-  ngOnInit(): void {
-    this.getTrips();
-    this.getPosts();
   }
 
   moveToAddTripPage() {

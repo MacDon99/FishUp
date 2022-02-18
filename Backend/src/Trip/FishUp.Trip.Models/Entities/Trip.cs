@@ -50,6 +50,10 @@ namespace FishUp.Trip.Models.Entities
 
         public void Participate(Guid userId)
         {
+            if (Participants is null)
+            {
+                Participants = new List<Participant>();
+            }
             Participants.Add(new Participant(userId, Id));
         }
 

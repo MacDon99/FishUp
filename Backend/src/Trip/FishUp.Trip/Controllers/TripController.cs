@@ -25,7 +25,15 @@ namespace FishUp.Trip.Controllers
 
         [HttpGet("available")]
         public async Task<IActionResult> GetAvailableTrips()
-            => Ok(await _mediator.Send(new GetAvailableTripsQuery()));
+            => Ok(await _mediator.Send(new GetAvailableTripsQuery(GetUserId())));
+
+        [HttpGet("created")]
+        public async Task<IActionResult> GetCreatedTrips()
+            => Ok(await _mediator.Send(new GetCreatedTripsQuery(GetUserId())));
+
+        [HttpGet("joined")]
+        public async Task<IActionResult> GetJoinedTrips()
+            => Ok(await _mediator.Send(new GetJoinedTripsQuery(GetUserId())));
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTripDetails(Guid id)

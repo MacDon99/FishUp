@@ -25,7 +25,7 @@ namespace FishUp.Post.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetRecentPosts()
-            => Ok(await _mediator.Send(new GetRecentPostsQuery()));
+            => Ok(await _mediator.Send(new GetRecentPostsQuery(GetUserId())));
 
         [HttpGet("created/{userId}")]
         public async Task<IActionResult> GetCreatedPosts(Guid userId)

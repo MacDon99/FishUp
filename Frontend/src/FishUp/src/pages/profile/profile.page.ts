@@ -21,9 +21,17 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
     this.httpService.getProfileDetails(this.getUserId()).subscribe((profileDetails: ProfileDetails) => {
       this.profileDetails = profileDetails;
-      this.httpService.getUserPosts(this.getUserId()).subscribe((userPosts: UserPosts) => {
-        this.userPosts = userPosts;
-      })
+      this.getPosts();
+    })
+  }
+
+  ionViewWillEnter() {
+    this.getPosts();
+  }
+
+  getPosts() {
+    this.httpService.getUserPosts(this.getUserId()).subscribe((userPosts: UserPosts) => {
+      this.userPosts = userPosts;
     })
   }
 

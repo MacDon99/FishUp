@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from  '@angular/common/http';
 import { CreateProfilePage } from '../pages/create-profile/create-profile.page';
 import { SearcherPage } from '../pages/searcher/searcher.page';
+import { AddPostPage } from '../pages/add-post/add-post.page';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { SearcherPage } from '../pages/searcher/searcher.page';
     PostDetailsPage,
     SearcherPage,
     UserProfilePage,
-    FriendsPage
+    FriendsPage,
+    AddPostPage
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ import { SearcherPage } from '../pages/searcher/searcher.page';
     PostDetailsPage,
     SearcherPage,
     UserProfilePage,
-    FriendsPage
+    FriendsPage,
+    AddPostPage
   ],
   providers: [
     StatusBar,

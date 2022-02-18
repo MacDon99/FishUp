@@ -15,11 +15,22 @@ html, body {margin: 0; height: 100%; overflow: hidden}
   height: 80%;
 }
 
-.profileData {
+.friendships {
   width: 100%;
-  & .data-item{
+  & .friend{
     & h5 {
-      margin: 2px;
+      margin: 2px !important;
+      padding: 2px !important;
     }
   }
+}
+
+.friend {
+  padding: 1px;
+}
+
+.friendships:hover {
+  cursor: pointer;
+  background-color: rgb(169, 167, 170);
+  border-radius: 40px;
 }

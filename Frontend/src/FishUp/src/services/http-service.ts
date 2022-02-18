@@ -10,6 +10,8 @@ import { SignIn } from '../models/sign-in';
 import { SignUp } from '../models/sign-up';
 import { UserPosts } from '../models/user-posts';
 import { AvailableTrips } from '../models/available-trips';
+import { Friendships } from '../models/friendships';
+import { RecentPosts } from '../models/recent-posts';
 
 @Injectable()
 export class HttpService {
@@ -63,12 +65,31 @@ addFriend(id: string) {
   }, this.addHeaders())
 }
 
-private addHeaders(params = null) {
+deleteFriend(id: string) {
+  return this.httpClient.delete(`${BaseUrls.Profile}/friend/remove`, this.addHeaders(null, {
+    friendId: id
+  }))
+}
+
+getUserFriends() {
+  return this.httpClient.get<Friendships>(`${BaseUrls.Profile}/friend`, this.addHeaders())
+}
+
+getRecentPosts() {
+  return this.httpClient.get<RecentPosts>(`${BaseUrls.Post}`, this.addHeaders())
+}
+
+addPost(message: string) {
+  return this.httpClient.post(`${BaseUrls.Post}`, message, this.addHeaders())
+}
+
+private addHeaders(params = null, body = null) {
   return {
     headers: {
       'Authorization': `Bearer ${this.getToken()}`
     },
-    params: params
+    params: params,
+    body: body
   }
 }
 

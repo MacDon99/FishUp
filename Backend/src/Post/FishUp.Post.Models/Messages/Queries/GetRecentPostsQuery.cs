@@ -3,5 +3,5 @@ using FishUp.Post.Models.Responses.Queries;
 
 namespace FishUp.Post.Models.Messages.Queries
 {
-    public record GetRecentPostsQuery() : IQuery<RecentPosts>;
+    public record GetRecentPostsQuery(Guid UserId) : IQuery<RecentPosts>;
 }

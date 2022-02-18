@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
-import { LoadingController, AlertController, Loading } from 'ionic-angular';
+import { LoadingController, AlertController, Loading, NavController } from 'ionic-angular';
 import { AccessToken } from '../../models/access-token';
 import { ProfileDetails } from '../../models/profile-details';
 import { UserPosts } from '../../models/user-posts';
@@ -20,10 +20,11 @@ export class UserProfilePage implements OnInit {
   currentUserId = '';
 
   canAddFriend = true;
+  canDeleteFriend = false;
 
   @Output() onGoBackEmit = new EventEmitter();
   constructor(private httpService: HttpService, private loadingController: LoadingController, private alertController: AlertController) {
-   }
+  }
 
   ngOnInit() {
     this.getProfileDetails();
@@ -34,6 +35,9 @@ export class UserProfilePage implements OnInit {
       this.currentUserId = this.getUserId();
       this.profileDetails = profileDetails;
       this.canAddFriend = this.profileDetails.friendsIds.indexOf(this.currentUserId) == -1;
+
+      this.canDeleteFriend = !(this.currentUserId != this.userId && this.canAddFriend);
+
       this.httpService.getUserPosts(this.userId).subscribe((userPosts: UserPosts) => {
         this.userPosts = userPosts;
       })
@@ -53,7 +57,7 @@ export class UserProfilePage implements OnInit {
     this.displayCommentDetailsPage = true;
   }
 
-  goBackToSearcher() {
+  goBack() {
     this.currentCommentId = null;
     this.displayProfilePage = true;
     this.displayCommentDetailsPage = false;
@@ -75,6 +79,29 @@ export class UserProfilePage implements OnInit {
     loader.present();
 
     this.httpService.addFriend(this.userId)
+      .subscribe(() => {
+        loader.dismiss();
+        this.getProfileDetails();
+      }, () => {
+        loader.dismiss();
+        const alert = this.alertController.create({
+          message: 'Nie udało się dodać znajomego.',
+          buttons: ['OK']
+        });
+
+        alert.present();
+      })
+  }
+
+  deleteFriend() {
+    let loader: Loading = this.loadingController.create({
+      content: 'Proszę czekać...',
+      duration: 60000
+    });
+
+    loader.present();
+
+    this.httpService.deleteFriend(this.userId)
       .subscribe(() => {
         loader.dismiss();
         this.getProfileDetails();

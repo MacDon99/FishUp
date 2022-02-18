@@ -1,28 +1,44 @@
-<ion-header>
-  <ion-navbar>
-  </ion-navbar>
-</ion-header>
-<ion-content padding>
-  <div class="buttons">
-    <div class="fishup-btn primary add" (click)="addPost()">
-      Nowy post
-    </div>
-    <div class="fishup-btn primary add" (click)="addTrip()">
-      Nowy trip
-    </div>
-  </div>
-  <h4>Najnowsze posty</h4>
-  <p>
-    Tu zaraz będą najnowsze posty
-  </p>
-  <h4>Zaplanowane podróże</h4>
-  <p *ngIf="availableTrips?.trips.length == 0">
-    Tu niedługo pojawią się dostępne podróże
-  </p>
-  <ng-container *ngIf="availableTrips?.trips?.length != 0">
-    <div class="trip" *ngFor="let trip of availableTrips?.trips">
-      <p class="author">{{trip?.author}}</p>
-      <p>{{trip?.destination}}</p>
-    </div>
+<ng-container>
+  <ng-container *ngIf="displayHomePage">
+    <ion-header>
+      <ion-navbar>
+      </ion-navbar>
+    </ion-header>
+    <ion-content padding>
+      <div class="buttons">
+        <div class="fishup-btn primary add" (click)="moveToAddPostPage()">
+          Nowy post
+        </div>
+        <div class="fishup-btn primary add" (click)="moveToAddTripPage()">
+          Nowy trip
+        </div>
+      </div>
+      <h4>Najnowsze posty</h4>
+      <p *ngIf="recentPosts?.posts.length == 0">
+        Tu zaraz będą najnowsze posty
+      </p>
+      <ng-container *ngIf="recentPosts?.posts.length != 0">
+        <div class="trip" *ngFor="let post of recentPosts?.posts" (click)="moveToPostDetailsPage(post?.postId)">
+          <p class="author">{{post?.message}}</p>
+          <p>{{post?.authorName}}</p>
+        </div>
+      </ng-container>
+      <h4>Zaplanowane podróże</h4>
+      <p *ngIf="availableTrips?.trips.length == 0">
+        Tu niedługo pojawią się dostępne podróże
+      </p>
+      <ng-container *ngIf="availableTrips?.trips?.length != 0">
+        <div class="trip" *ngFor="let trip of availableTrips?.trips">
+          <p class="author">{{trip?.author}}</p>
+          <p>{{trip?.destination}}</p>
+        </div>
+      </ng-container>
+    </ion-content>
   </ng-container>
-</ion-content>
+  <ng-container *ngIf="displayAddPostPage">
+    <add-post (onAddedPostEmit)="onAddedPostEmit()"></add-post>
+  </ng-container>
+  <ng-container *ngIf="displayCommentDetailsPage">
+    <post-details-page (onGoBackEmit)="onGoBackFromPostEmit()" [commentId]="currentCommentId" ></post-details-page>
+    </ng-container>
+</ng-container>

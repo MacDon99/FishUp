@@ -3,6 +3,7 @@ import { HttpService } from './../../services/http-service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { NavController, LoadingController, Loading } from 'ionic-angular';
+import { RecentPosts } from '../../models/recent-posts';
 
 @Component({
   selector: 'page-home',
@@ -11,20 +12,70 @@ import { NavController, LoadingController, Loading } from 'ionic-angular';
 export class HomePage implements OnInit {
 
   availableTrips: AvailableTrips = new AvailableTrips();
+  recentPosts : RecentPosts = new RecentPosts();;
+  displayHomePage = true;
+  displayAddPostPage = false;
+  displayCommentDetailsPage = false;
+  currentCommentId = '';
+
   constructor(public navCtrl: NavController, private httpService: HttpService, private loadingController: LoadingController) {
 
   }
 
   ngOnInit(): void {
     this.getTrips();
+    this.getPosts();
   }
 
-  addTrip() {
+  moveToAddTripPage() {
 
   }
 
-  addPost() {
+  moveToPostDetailsPage(postId: string) {
+    this.currentCommentId = postId;
 
+    this.displayHomePage = false;
+    this.displayAddPostPage = false;
+    this.displayCommentDetailsPage = true;
+  }
+
+  moveToAddPostPage() {
+    this.displayHomePage = false;
+    this.displayAddPostPage = true;
+    this.displayCommentDetailsPage = false;
+  }
+
+  onGoBackFromPostEmit() {
+    this.displayHomePage = true;
+    this.displayAddPostPage = false;
+    this.displayCommentDetailsPage = false;
+  }
+
+  onAddedPostEmit() {
+    this.displayHomePage = true;
+    this.displayAddPostPage = false;
+    this.displayCommentDetailsPage = false;
+    this.getPosts();
+  }
+
+  ionViewWillEnter() {
+    this.getPosts();
+  }
+
+  getPosts() {
+    let loader: Loading = this.loadingController.create({
+      content: 'Proszę czekać...',
+      duration: 60000
+    });
+    loader.present();
+
+    this.httpService.getRecentPosts()
+    .subscribe((recentPosts) => {
+        loader.dismiss();
+        this.recentPosts = recentPosts;
+      }, () => {
+        loader.dismiss();
+      })
   }
 
   getTrips() {

@@ -19,7 +19,7 @@ namespace FishUp.Profile.Handlers.Queries
             {
                 UserFriends = await _appDbContext.Friends
                     .Where(friendship => friendship.UserId == request.UserId)
-                    .Join(_appDbContext.Users, friendship => friendship.UserId, user => user.IdentityUserId,
+                    .Join(_appDbContext.Users, friendship => friendship.FriendId, user => user.IdentityUserId,
                         (friendship, user) => new
                         {
                             Friendship = friendship,

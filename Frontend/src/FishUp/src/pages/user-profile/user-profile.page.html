@@ -7,11 +7,14 @@
             <div class="user-profile-panel">
               <br>
               <br>
-              <div class="fishup-btn danger go-back" (click)="goBackToSearcher()">
+              <div class="fishup-btn danger go-back" (click)="goBack()">
                 Powrót
               </div>
               <div *ngIf="currentUserId != userId && canAddFriend" class="fishup-btn primary add-friend" (click)="addFriend()">
                 Dodaj
+              </div>
+              <div *ngIf="canDeleteFriend" class="fishup-btn primary delete-friend" (click)="deleteFriend()">
+                Usuń
               </div>
               <h3>Profil</h3>
               <div class="profileData">

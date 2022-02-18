@@ -1,0 +1,22 @@
+<ng-container>
+    <div class="add-post-page">
+      <ion-grid class="full-height">
+        <ion-row class="full-height">
+          <ion-col align-self-center class="full-height">
+            <div class="add-post-panel">
+              <br>
+              <h3>Dodaj post</h3>
+              <form>
+                <form [formGroup]="form">
+                  <ion-input type="textarea" formControlName="message" placeholder="Treść" class="base-input"></ion-input>
+                </form>
+                <div class="fishup-btn primary" (click)="addPost()">
+                  Dodaj post
+                </div>
+              </form>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+</ng-container>

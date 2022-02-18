@@ -7,23 +7,22 @@
             <div class="friends-panel">
               <br>
               <h3>Znajomi</h3>
+              <ion-content>
+                <div class="friendships">
+                  <ng-container *ngIf="friendships?.userFriends">
+                    <div class="friend" *ngFor="let friendship of friendships.userFriends" (click)="goToFriendPage(friendship.userId)">
+                      <h5 class="full-width">{{friendship.name}}</h5>
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-content>
             </div>
           </ion-col>
         </ion-row>
-        <ion-content>
-          <div class="profileData">
-            <ng-container *ngIf="userPosts?.posts">
-              <div class="data-item" *ngFor="let post of userPosts.posts">
-                <h5 class="full-width">{{post.content}}</h5>
-                <div class="fishup-btn comment" (click)="goToComments(post.id)">Komentarze</div>
-              </div>
-            </ng-container>
-          </div>
-        </ion-content>
       </ion-grid>
     </div>
 </ng-container>
 <ng-container *ngIf="displayFriendProfilePage">
-  <user-profile [userId]="selectedUserId" ></user-profile>
+  <user-profile [userId]="selectedUserId" (onGoBackEmit)="goBackToFriendsPage()" ></user-profile>
 </ng-container>
 </ng-container>

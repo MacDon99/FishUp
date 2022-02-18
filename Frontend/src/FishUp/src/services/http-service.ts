@@ -111,6 +111,10 @@ leaveTrip(tripId: string) {
   return this.httpClient.put(`${BaseUrls.Trip}/${tripId}/leave`, {}, this.addHeaders())
 }
 
+deleteTrip(tripId: string) {
+  return this.httpClient.delete(`${BaseUrls.Trip}/${tripId}/delete`, this.addHeaders())
+}
+
 private addHeaders(params = null, body = null) {
   return {
     headers: {

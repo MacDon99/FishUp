@@ -14,6 +14,9 @@
           <div *ngIf="canLeaveTrip" class="fishup-btn primary leave-trip" (click)="leaveTrip()">
             Odejdź
           </div>
+          <div *ngIf="canDeleteTrip" class="fishup-btn primary delete-trip" (click)="deleteTrip()">
+            Usuń
+          </div>
           <h3>{{tripDetails?.destination || 'Ładowanie'}}</h3>
           <h5>Autor: {{tripDetails?.authorName || '-'}}</h5>
           <h5>Kiedy: {{tripDetails?.startDate | date: 'dd/MM/yyyy' || '-'}}</h5>

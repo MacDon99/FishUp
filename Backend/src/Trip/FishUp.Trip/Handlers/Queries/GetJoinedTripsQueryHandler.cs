@@ -22,6 +22,7 @@ namespace FishUp.Trip.Handlers.Queries
             {
                 Trips = await _appDbContext.Trips
                     .Include(trip => trip.Participants)
+                    .Where(trip => trip.Active)
                     .Where(trip => trip.Participants.FirstOrDefault(participant => participant.UserId == request.UserId) != null)
                     .Join(_appDbContext.Users, trip => trip.AuthorId, user => user.IdentityUserId, (trip, user) => new
                     {

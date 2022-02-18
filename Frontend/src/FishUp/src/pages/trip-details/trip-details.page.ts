@@ -17,6 +17,7 @@ export class TripDetailsPage implements OnInit {
   tripDetails: TripDetails = new TripDetails();
   canJoinTrip = false;
   canLeaveTrip = false;
+  canDeleteTrip = false;
   currentUserId = '';
   constructor(private httpService: HttpService, private loadingController: LoadingController, private alertController: AlertController) { }
 
@@ -58,6 +59,7 @@ export class TripDetailsPage implements OnInit {
     .subscribe((tripDetails) => {
       loader.dismiss();
       this.tripDetails = tripDetails;
+      this.canDeleteTrip = this.currentUserId == this.tripDetails.authorId;
       this.canJoinTrip = this.tripDetails.authorId != this.currentUserId && this.tripDetails.participants.find(x => x.participantUserId == this.currentUserId) == null;
       this.canLeaveTrip = this.tripDetails.authorId != this.currentUserId && this.tripDetails.participants.find(x => x.participantUserId == this.currentUserId) != null;
     }, () => {
@@ -133,6 +135,29 @@ export class TripDetailsPage implements OnInit {
       loader.dismiss();
       const alert = this.alertController.create({
         message: 'Wystąpił błąd podczas odejścia od wyprawy.',
+        buttons: ['OK']
+      });
+
+      alert.present();
+    })
+  }
+
+  deleteTrip() {
+    let loader: Loading = this.loadingController.create({
+      content: 'Proszę czekać...',
+      duration: 60000
+    });
+
+    loader.present();
+
+    this.httpService.deleteTrip(this.tripId)
+    .subscribe(() => {
+      loader.dismiss();
+      this.onGoBackEmit.emit();
+    }, () => {
+      loader.dismiss();
+      const alert = this.alertController.create({
+        message: 'Wystąpił błąd podczas usuwania wyprawy.',
         buttons: ['OK']
       });
 

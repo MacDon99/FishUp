@@ -1,4 +1,4 @@
-﻿using FishUp.Post.Models.Entities;
+﻿using FishUp.Models.Types;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

@@ -43,6 +43,22 @@ namespace FishUp.Trip.Controllers
         public async Task<IActionResult> UpdateTrip([FromBody] UpdateTripCommand request, Guid id)
             => Ok(await _mediator.Send(request with { UserId = GetUserId(), TripId = id }));
 
+        [HttpPut("{id}/like")]
+        public async Task<IActionResult> LikeTrip(Guid id)
+            => Ok(await _mediator.Send(new LikeTripCommand(GetUserId(), id)));
+
+        [HttpPut("{id}/unlike")]
+        public async Task<IActionResult> UnlikeTrip(Guid id)
+            => Ok(await _mediator.Send(new UnlikeTripCommand(GetUserId(), id)));
+
+        [HttpPut("{id}/disLike")]
+        public async Task<IActionResult> DislikeTrip(Guid id)
+            => Ok(await _mediator.Send(new DislikeTripCommand(GetUserId(), id)));
+
+        [HttpPut("{id}/unDisLike")]
+        public async Task<IActionResult> UndislikeTrip(Guid id)
+            => Ok(await _mediator.Send(new UndislikeTripCommand(GetUserId(), id)));
+
         [HttpPut("{id}/comment")]
         public async Task<IActionResult> CommentTrip([FromBody] CommentTripCommand request, Guid id)
             => Ok(await _mediator.Send(request with { UserId = GetUserId(), TripId = id }));

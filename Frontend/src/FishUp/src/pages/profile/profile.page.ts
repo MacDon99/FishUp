@@ -48,6 +48,7 @@ export class ProfilePage {
     this.currentCommentId = null;
     this.displayProfilePage = true;
     this.displayCommentDetailsPage = false;
+    this.getPosts();
   }
 
   parseJwt (token) {

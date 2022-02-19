@@ -8,6 +8,9 @@
           <div class="fishup-btn danger go-back" (click)="goBack()">
             Powrót
           </div>
+          <div *ngIf="canDeletePost" class="fishup-btn danger delete-post" (click)="deletePost()">
+            Usuń
+          </div>
           <h3>{{postDetails?.content || 'Ładowanie'}}</h3>
           <div class="comments">
             <div class="comment" *ngFor="let comment of postDetails?.comments">
@@ -18,6 +21,7 @@
           <ion-content>
           </ion-content>
         </div>
+        <likes *ngIf="postDetails?.id" [what]="'post'" [whatId]="postDetails.id" [liked]="liked" [disLiked]="disLiked" [likes]="likesCount" [disLikes]="disLikesCount" ></likes>
         <form [formGroup]="form" class="messageForm">
           <ion-input formControlName="message" type="text" placeholder="Napisz coś..."></ion-input>
           <div class="fishup-btn comment" (click)="addComment()">

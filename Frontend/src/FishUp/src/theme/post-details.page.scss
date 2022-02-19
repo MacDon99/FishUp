@@ -31,3 +31,9 @@ html, body {margin: 0; height: 100%; overflow: hidden}
   align-items: flex-start;
   justify-content: flex-start;
 }
+
+.delete-post {
+  position: absolute;
+  right: 5px;
+  top: 20px;
+}

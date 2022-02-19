@@ -18,7 +18,10 @@ namespace FishUp.Post.Handlers.Queries
 
         public async Task<PostDetails> Handle(GetPostDetailsQuery request, CancellationToken cancellationToken)
         {
-            var post = await _appDbContext.Posts.Join(_appDbContext.Users, post => post.AuthorId, user => user.IdentityUserId, (post, user) => new
+            var post = await _appDbContext.Posts
+                .Include(post => post.Likers)
+                .Include(post => post.Dislikers)
+                .Join(_appDbContext.Users, post => post.AuthorId, user => user.IdentityUserId, (post, user) => new
             {
                 Post = post,
                 User = user
@@ -26,9 +29,14 @@ namespace FishUp.Post.Handlers.Queries
             { 
                 Id = group.Post.Id,
                 Author = group.User.FirstName + (group.User.SecondName != null ? " " + group.User.SecondName : string.Empty) + " " + group.User.LastName,
+                AuthorId = group.Post.AuthorId,
                 Content = group.Post.Content,
                 CreatedDate = group.Post.CreateDate,
                 Photos = null,
+                LikersIds = group.Post.Likers.Select(liker => liker.UserId),
+                DisLikersIds = group.Post.Dislikers.Select(liker => liker.UserId),
+                LikesCount = group.Post.LikesCount,
+                DisLikesCount = group.Post.DislikesCount,
                 Comments = group.Post.Comments.Join(_appDbContext.Users, comment => comment.AuthorId, user => user.IdentityUserId, (comment, user) => new
                 {
                     Comment = comment,
@@ -38,7 +46,7 @@ namespace FishUp.Post.Handlers.Queries
                     AuthorId = commentUserGroup.Comment.AuthorId,
                     AuthorName = commentUserGroup.User.FirstName + (commentUserGroup.User.SecondName != null ? " " + commentUserGroup.User.SecondName : string.Empty) + " " + commentUserGroup.User.LastName,
                     Id = commentUserGroup.Comment.Id,
-                    Message = commentUserGroup.Comment.Message
+                    Message = commentUserGroup.Comment.Message,
                 })
             }).FirstOrDefaultAsync();
 

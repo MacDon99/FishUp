@@ -115,6 +115,50 @@ deleteTrip(tripId: string) {
   return this.httpClient.delete(`${BaseUrls.Trip}/${tripId}/delete`, this.addHeaders())
 }
 
+like(what: string, whatId: string) {
+  let baseUrl = '';
+  if(what == 'post') {
+    baseUrl = BaseUrls.Post;
+  } else {
+    baseUrl = BaseUrls.Trip;
+  }
+  return this.httpClient.put(`${baseUrl}/${whatId}/like`, {}, this.addHeaders())
+}
+
+unLike(what: string, whatId: string) {
+  let baseUrl = '';
+  if(what == 'post') {
+    baseUrl = BaseUrls.Post;
+  } else {
+    baseUrl = BaseUrls.Trip;
+  }
+  return this.httpClient.put(`${baseUrl}/${whatId}/unLike`, {}, this.addHeaders())
+}
+
+disLike(what: string, whatId: string) {
+  let baseUrl = '';
+  if(what == 'post') {
+    baseUrl = BaseUrls.Post;
+  } else {
+    baseUrl = BaseUrls.Trip;
+  }
+  return this.httpClient.put(`${baseUrl}/${whatId}/disLike`, {}, this.addHeaders())
+}
+
+unDisLike(what: string, whatId: string) {
+  let baseUrl = '';
+  if(what == 'post') {
+    baseUrl = BaseUrls.Post;
+  } else {
+    baseUrl = BaseUrls.Trip;
+  }
+  return this.httpClient.put(`${baseUrl}/${whatId}/unDisLike`, {}, this.addHeaders())
+}
+
+deletePost(postId: string) {
+  return this.httpClient.delete(`${BaseUrls.Post}/${postId}/delete`, this.addHeaders())
+}
+
 private addHeaders(params = null, body = null) {
   return {
     headers: {

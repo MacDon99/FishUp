@@ -56,7 +56,7 @@ namespace FishUp.Post.Controllers
             => Ok(await _mediator.Send(new DislikePostCommand(GetUserId(), id)));
 
 
-        [HttpPut("{id}/undisLike")]
+        [HttpPut("{id}/unDisLike")]
         public async Task<IActionResult> UndislikePost(Guid id)
             => Ok(await _mediator.Send(new UndislikePostCommand(GetUserId(), id)));
 

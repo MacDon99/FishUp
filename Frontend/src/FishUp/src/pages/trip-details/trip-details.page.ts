@@ -19,6 +19,10 @@ export class TripDetailsPage implements OnInit {
   canLeaveTrip = false;
   canDeleteTrip = false;
   currentUserId = '';
+  liked = false;
+  disLiked = false;
+  likesCount = 0;
+  disLikesCount = 0;
   constructor(private httpService: HttpService, private loadingController: LoadingController, private alertController: AlertController) { }
 
   ngOnInit() {
@@ -62,6 +66,10 @@ export class TripDetailsPage implements OnInit {
       this.canDeleteTrip = this.currentUserId == this.tripDetails.authorId;
       this.canJoinTrip = this.tripDetails.authorId != this.currentUserId && this.tripDetails.participants.find(x => x.participantUserId == this.currentUserId) == null;
       this.canLeaveTrip = this.tripDetails.authorId != this.currentUserId && this.tripDetails.participants.find(x => x.participantUserId == this.currentUserId) != null;
+      this.likesCount = this.tripDetails.likesCount;
+      this.disLikesCount = this.tripDetails.disLikesCount;
+      this.liked = this.tripDetails.likersIds.find(likerId => likerId == this.currentUserId) != null;
+      this.disLiked = this.tripDetails.disLikersIds.find(disLikerId => disLikerId == this.currentUserId) != null;
     }, () => {
       loader.dismiss();
       const alert = this.alertController.create({

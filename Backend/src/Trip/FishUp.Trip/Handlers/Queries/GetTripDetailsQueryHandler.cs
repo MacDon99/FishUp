@@ -20,6 +20,8 @@ namespace FishUp.Trip.Handlers.Queries
         {
             var trip = await _appDbContext.Trips
                 .Include(trip => trip.Participants)
+                .Include(trip => trip.Likers)
+                .Include(trip => trip.Dislikers)
                 .Where(trip => trip.Id == request.TripId)
                 .Join(_appDbContext.Users, trip => trip.AuthorId, user => user.IdentityUserId, (trip, user) => new
                  {
@@ -35,6 +37,10 @@ namespace FishUp.Trip.Handlers.Queries
                     Destination = group.Trip.Destination,
                     StartDate = group.Trip.StartDate,
                     EndDate = group.Trip.EndDate,
+                    LikersIds = group.Trip.Likers.Select(liker => liker.UserId),
+                    DisLikersIds = group.Trip.Dislikers.Select(disLiker => disLiker.UserId),
+                    LikesCount = group.Trip.LikesCount,
+                    DisLikesCount = group.Trip.DislikesCount,
                     Participants = _appDbContext.Participants
                             .Where(participant => participant.TripId == group.Trip.Id)
                             .Join(_appDbContext.Users, participant => participant.UserId, user => user.IdentityUserId, (participant, user) => new

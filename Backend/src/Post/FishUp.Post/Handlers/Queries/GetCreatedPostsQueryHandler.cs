@@ -18,6 +18,7 @@ namespace FishUp.Post.Handlers.Queries
             => new CreatedPosts()
             {
                 Posts = await _dbContext.Posts
+                  .Where(post => post.Active)
                   .Where(post => post.AuthorId == request.UserId)
                   .Join(_dbContext.Users, post => post.AuthorId, user => user.IdentityUserId, (post, user) => new
                   {

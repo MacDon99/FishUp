@@ -1,0 +1,13 @@
+
+.likes {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.like-btn {
+  margin-left: 7px;
+  margin-right: 7px;
+  cursor: pointer;
+}

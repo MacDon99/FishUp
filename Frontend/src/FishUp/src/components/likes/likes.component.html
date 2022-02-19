@@ -1,0 +1,18 @@
+<div class="likes">
+  <div class="like-btn"  *ngIf="!liked" (click)="like()" >
+    <ion-icon name="thumbs-up-outline" size="large"></ion-icon>
+  </div>
+  <div class="like-btn" *ngIf="liked" (click)="unLike()">
+    <ion-icon name="thumbs-up" size="large"></ion-icon>
+  </div>
+  <div class="like-btn" *ngIf="!disLiked" (click)="disLike()">
+    <ion-icon name="thumbs-down-outline" size="large"></ion-icon>
+  </div>
+  <div class="like-btn" *ngIf="disLiked"(click)="unDisLike()">
+    <ion-icon name="thumbs-down" size="large"></ion-icon>
+  </div>
+  <div>Lajki: {{likes}}</div>
+  &nbsp;
+  &nbsp;
+  <div>Nielajki: {{disLikes}}</div>
+</div>

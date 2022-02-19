@@ -1,6 +1,6 @@
 ﻿using FishUp.Models.Types;
 
-namespace FishUp.Post.Models.Entities
+namespace FishUp.Models.Types
 {
     public class Liker : TypeBase
     {

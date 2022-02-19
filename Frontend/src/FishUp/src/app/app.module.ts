@@ -24,6 +24,7 @@ import { SearcherPage } from '../pages/searcher/searcher.page';
 import { AddPostPage } from '../pages/add-post/add-post.page';
 import { TripDetailsPage } from '../pages/trip-details/trip-details.page';
 import { TripsPage } from '../pages/trips/trips.page';
+import { LikesComponent } from '../components/likes/likes.component';
 
 @NgModule({
   declarations: [
@@ -42,8 +43,9 @@ import { TripsPage } from '../pages/trips/trips.page';
     AddPostPage,
     TripDetailsPage,
     AddTripPage,
-    TripsPage
-  ],
+    TripsPage,
+    LikesComponent
+   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),

@@ -12,4 +12,8 @@ export class TripDetails {
   closed: boolean;
   comments: AddedComment[];
   participants: JoinedParticipant[];
+  likersIds : string[];
+  disLikersIds : string[];
+  likesCount: number;
+  disLikesCount: number;
 }
